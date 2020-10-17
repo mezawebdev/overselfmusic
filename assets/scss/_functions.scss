@@ -1,0 +1,22 @@
+/*
+||----------------------------------||
+||									||
+||    Boilerplate    				||
+||	  SASS Functions        		||
+||	  Alex Meza (Meza Web Lab)  	||
+||	  2018					  		||
+||									||
+||----------------------------------||
+*/
+
+@function get-transitions($duration, $properties...) {
+    $transition : "";
+    $newTransition : "";
+
+    @each $property in $properties {
+    	$newTransition : $property + " " + $duration + " ease-in-out, ";
+    	$transition : $transition + $newTransition;
+    }
+
+    @return unquote($transition);
+}

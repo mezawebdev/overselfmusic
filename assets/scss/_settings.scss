@@ -1,0 +1,83 @@
+/*
+||----------------------------------||
+||									||
+||    Overself Music  				||
+||	  Global Style Settings  		||
+||	  Alex Meza (Meza Web Lab)  	||
+||	  2018					  		||
+||									||
+||----------------------------------||
+*/
+
+/*
+||--------------------------||
+||	     Breakpoints     	||
+||--------------------------||
+*/
+$breakpoint-sm  : 560px;
+$breakpoint-md  : 768px;
+$breakpoint-xmd : 992px;
+$breakpoint-lg  : 1200px;
+
+/*
+||--------------------------||
+||	       Palette 	    	||
+||--------------------------||
+*/
+
+$color-primary : #D83F38;
+$white         : rgb(250, 250, 250);
+$black         : rgb(50, 50, 50);
+
+/*
+||--------------------------||
+||	      Typography 	   	||
+||--------------------------||
+*/
+
+$font-family      : futura-pt-condensed, helvetica, sans-serif;
+$letter-spacing   : 1px;
+$font-weight-p    : 300;
+$text-shadow-main : 0px 2px 5px rgba(0, 0, 0, 0.5);
+$m-font-size-h1   : 2em;
+$d-font-size-h1   : 3em;
+$m-font-size-h4   : 1.25em;
+$m-font-size-p    : 0.85em;
+$m-line-height-h1 : 40px;
+$d-line-height-h1 : 60px;
+$m-line-height-p  : 20px;
+
+
+/*
+||--------------------------||
+||	       Layout 	    	||
+||--------------------------||
+*/
+// Navigation
+$social-media-link-size-s     : 30px;
+$social-media-link-grid-gap-s : 10px;
+$social-media-link-size-d     : 35px;
+$social-media-link-grid-gap-d : 10px;
+$nav-drop-shadow              : drop-shadow(0px 2px 6px rgba(0, 0, 0, 0.3));
+
+// Background
+$overlay-bg-color : rgba(32, 32, 32, 0.5);
+
+/*
+||--------------------------||
+||	       Effects    	   	||
+||--------------------------||
+*/
+
+$box-shadow-main : 0px 2px 16px rgba(0, 0, 0, 0.3);
+
+
+/*
+||--------------------------||
+||	      Transitions     	||
+||--------------------------||
+*/
+
+$responsive-transition-duration : 1s;
+
+

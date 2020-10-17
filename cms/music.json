@@ -1,0 +1,149 @@
+{
+    "albums" : [
+        {
+            "id"          : 2,
+            "name"        : "Discovery",
+            "description" : "",
+            "path"        : "/music/discovery",
+            "released"    : true,
+            "releaseDate" : "",
+            "artwork"     : {
+                "src"    : "assets/images/discovery-artwork.jpg",
+                "artist" : "Adam Flores"
+            },
+            "engineer"    : "Alex Jacobelli",
+            "producer"    : "",
+            "tracks"      : [
+                {
+                    "id"     : 8,
+                    "name"   : "Discovery",
+                    "lyrics" : ""
+                }
+            ],
+            "songwriters" : [
+                {
+                    "name" : "Peter Tueller",
+                    "contribution" : "Guitar, Lyrics, Synth"
+                },
+                {
+                    "name" : "Alex Meza",
+                    "contribution" : "Drums"
+                },
+                {
+                    "name" : "Oscar Paez",
+                    "contribution" : "Bass"
+                },
+                {
+                    "name" : "Diego Guardado",
+                    "contribution" : "Guitar"
+                }
+            ]
+        },
+        {
+            "id"          : 1,
+            "name"        : "Pulses",
+            "description" : "",
+            "path"        : "/music/pulses",
+            "released"    : true,
+            "releaseDate" : "",
+            "artwork"     : {
+                "src"    : "assets/images/pulses-artwork.jpg",
+                "artist" : "Adam Flores"
+            },
+            "engineer"    : "Alex Jacobelli",
+            "producer"    : "",
+            "tracks"      : [
+                {
+                    "id"     : 1,
+                    "name"   : "",
+                    "lyrics" : "<span>1. Transient</span><br /><br /><span>Verse 1</span><br />Trapped under the trees / broken, bound<br />Helpless and cold / sink through the ground<br />The count goes down to none / the bout leaves me weak<br />So tell me was it wrong / to yearn for light on my cheek<br /><br /><span>Chorus</span><br />But now I know that I am free<br />From everything I can’t see<br />Transient I’m shedding skin<br />Take me where I’ve never been<br /><br /><span>Verse 2</span><br />hold my head again / for a moment<br />Eyes clouding over / my heart still and closed<br />Futile attempts / bring purpose to dirt<br />So who are we to say / if joy is worth the hurt?<br /><br /><span>Chorus</span><br />But now I know that I am free<br />From everything I can’t see<br />Transient I’m shedding skin<br />Take me where I’ve never been<br />Take me far<br /><br /><span>Bridge</span><br />Ahhhh"
+                },
+                {
+                    "id"     : 2,
+                    "name"   : "",
+                    "lyrics" : "2. Effigy<br /><br />Touch / Teeth / Blood / Grief<br />Burn your effigy<br />This is where I’ll be<br />Reach / Search / Death / March<br />Burn your effigy<br />This is where we’ll be<br /><br />Lost / Thought / Torn / Caught<br />Burn your effigy<br />This is where I’ll be<br />Dark / Games / Fog / Flames<br />Burn your effigy<br />This is where we’ll be<br />"
+                },
+                {
+                    "id"     : 3,
+                    "name"   : "",
+                    "lyrics" : "3. Ego Crush<br /><br />Verse 1<br />Signs<br />Respect for the script<br />Caught up<br />Digressed from the start<br />Oh<br /><br />Chorus<br />Let go, we’ll float<br />There’s a lighthouse ahead<br />We can toss on the waves<br />We’ll lock fingers again<br />Slip through the page<br />Sprawling life in your veins<br />Take some time for yourself<br />We will meet again<br />In time/I know (last one only and repeat)<br /><br />Verse 2<br />Blank fields softly sway<br />Closed off<br />To strangle the day<br />Oh"
+                },
+                {
+                    "id"     : 4,
+                    "name"   : "",
+                    "lyrics" : "5. Interval <br /><br />No Lyrics."
+                },
+                {
+                    "id"     : 5,
+                    "name"   : "",
+                    "lyrics" : "5. Thought Experiment<br /><br />Silence eats up evenings<br />Resting anxiously<br />Everyday I’m waiting<br />For life to catch up with my thoughts<br /><br /><br />I was dreaming about what you said<br />My choice but I can’t shake pointless what ifs<br /><br /><br />Once again you’re crying<br />Hold your head I’m quiet<br />And everyday I’m waiting<br />For life to catch up with my thoughts<br /><br /><br />Once again you’re crying<br />Tossing anxiously<br />Everyday I’m waiting<br />For life to catch up with my thoughts<br />Everyday I’m waiting<br />For this experiment to end<br />"
+                },
+                {
+                    "id"     : 6,
+                    "name"   : "",
+                    "lyrics" : "6. Duality <br /><br />No Lyrics."
+                },
+                {
+                    "id"     : 7,
+                    "name"   : "",
+                    "lyrics" : "7. Dissolution<br /><br />Verse 1<br />Soft daylight / fades and is lost <br />Whirlwind swept / stuck in all these thoughts <br /><br />Chorus<br />Peace of mind / free from dread<br />Of being alive / of being alive <br />Longing for / eternity <br />There is nothing / dissolution<br />Content<br />To pass<br />Alive<br /><br />Verse 2<br />I find myself rooted to my bed again, unable to lift my head and face the day. <br />I’m breathing in water and the last rays of light<br /> seem to wink out above me like stars being swallowed by the inky night. <br />It is a cessation of selfHead sinking / abyss I breathe in <br />To this weight / my legs submit #<br /><br />Chorus<br />Peace of mind / free from dread<br />Of being alive / of being alive <br />Longing for / eternity<br />There is nothing / dissolution<br />Content<br />To pass<br />Alive"
+                }
+            ],
+            "songwriters" : [
+                {
+                    "name" : "Peter Tueller",
+                    "contribution" : "Guitar, Lyrics, Synth"
+                },
+                {
+                    "name" : "Alex Meza",
+                    "contribution" : "Drums, Lyrics"
+                },
+                {
+                    "name" : "Oscar Paez",
+                    "contribution" : "Bass, Lyrics"
+                }
+            ]
+        }
+    ],
+    "singles": [
+        {
+            "id"          : 1,
+            "name"        : "Discovery",
+            "description" : "",
+            "path"        : "/music/discovery",
+            "released"    : true,
+            "releaseDate" : "",
+            "artwork"     : {
+                "src"    : "assets/images/pulses-artwork.jpg",
+                "artist" : "Adam Flores"
+            },
+            "engineer"    : "Alex Jacobelli",
+            "producer"    : "",
+            "tracks"      : [
+                {
+                    "id"     : 1,
+                    "name"   : "Discovery",
+                    "lyrics" : ""
+                }
+            ],
+            "songwriters" : [
+                {
+                    "name" : "Peter Tueller",
+                    "contribution" : "Guitar, Lyrics, Synth"
+                },
+                {
+                    "name" : "Alex Meza",
+                    "contribution" : "Drums"
+                },
+                {
+                    "name" : "Oscar Paez",
+                    "contribution" : "Bass"
+                },
+                {
+                    "name" : "Diego Guardado",
+                    "contribution" : "Guitar"
+                }
+            ]
+        }
+    ]
+}
