@@ -113,12 +113,6 @@
                 height     : 100vh;
                 position   : absolute;
                 object-fit : cover;
-                
-                &.desktop,
-                &.mobile {
-                    object-fit : cover;
-                    width      : auto;
-                }
             }
         }
     }

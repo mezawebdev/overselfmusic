@@ -149,7 +149,7 @@
                 box-shadow    : $box-shadow-main;
                 font-size     : 1.4em;
                 padding       : 10px 20px;
-                color         : $white;
+                color         : black;
 
                 &.disabled {
                     pointer-events : none;

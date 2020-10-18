@@ -26,7 +26,7 @@
     }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
     #about-page {
         margin-bottom : 200px;
 

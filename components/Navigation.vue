@@ -14,7 +14,7 @@
         <img 
             alt="overself band music" 
             class="logo" 
-            src="~/assets/images/overself-logo-temp.png" />
+            src="/assets/images/logo-2020.png" />
         <div class="container">
             <div class="nav-links">
                 <!-- <a 
@@ -63,7 +63,7 @@
                     exact>
                     LIVE
                 </router-link>
-                <span v-if="layout === 'main'">&middot;</span>
+                <!-- <span v-if="layout === 'main'">&middot;</span>
                 <nuxt-link 
                     v-if="layout === 'main'"
                     active-class="active" 
@@ -71,7 +71,7 @@
                     to="/gallery" 
                     exact>
                     GALLERY
-                </nuxt-link>
+                </nuxt-link> -->
                 <span v-if="layout === 'main'">&middot;</span>
                 <nuxt-link 
                     v-if="layout === 'main'"
@@ -102,9 +102,12 @@
                         </a>
                     </div>
                     <div>
-                        <a target="_blank" href="http://twitter.com/overselfmusic">
+                        <!-- <a target="_blank" href="http://twitter.com/overselfmusic">
                             <i class="fab fa-twitter"></i>
-                        </a>
+                        </a> -->
+                        <a target="_blank" href="http://overself.bandcamp.com">
+                            <i class="fab fa-bandcamp"></i>
+                        </a> 
                     </div>
                     <div>
                         <a target="_blank" href="http://facebook.com/overselfmusic">
