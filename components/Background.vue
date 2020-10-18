@@ -106,17 +106,14 @@
             position : relative;
 
             video {
-                width     : 110%;
-                transform : translate(-50%, -50%);
-                left      : 50%;
-                top       : 50%;
-                position  : absolute;
-
-                @media (min-width : $breakpoint-md) {
-                    object-fit : cover;
-                    width      : auto;
-                }
-
+                width      : 100vw;
+                transform  : translate(-50%, -50%);
+                left       : 50%;
+                top        : 50%;
+                height     : 100vh;
+                position   : absolute;
+                object-fit : cover;
+                
                 &.desktop,
                 &.mobile {
                     object-fit : cover;

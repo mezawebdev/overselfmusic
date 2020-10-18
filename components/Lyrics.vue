@@ -60,6 +60,8 @@
             background    : rgba(0, 0, 0, 0.4);
             border-radius : 25px;
             width         : 50px;
+            border        : none;
+            cursor        : pointer;
             height        : 50px;
             
             i {

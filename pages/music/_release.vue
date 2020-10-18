@@ -13,30 +13,47 @@
 	<div 
         id="release-page" 
         class="container">
-        <div class="grid">
-            <div class="block">
-                <img 
-                    class="artwork" 
-                    :src="release.artwork.src" />
-            </div>
-            <div class="block">
-                <div class="inner-block">
-                    <p>{{ release.title }}</p>
-                    <div class="stream-services">
-                        <a
-                            v-for="(streamService, i) in release.streamServices"
-                            :key="i"
-                            target="_blank"
-                            :href="streamService.link">
-                            <i :class="streamService.icon"></i>
-                            <br />
-                            <span>{{ streamService.name }}</span>
-                        </a>
+        <a 
+            :class="typeof release.presaveURL === 'string' ? 'wrapper-link' : ''"
+            :href="typeof release.presaveURL === 'string' ? release.presaveURL : ''" :target="typeof release.presaveURL === 'string' ? '_blank' : ''">
+            <div class="grid">
+                <div class="block">
+                    <img 
+                        class="artwork" 
+                        :src="release.artwork.src" />
+                </div>
+                <div class="block">
+                    <div class="inner-block">
+                        <p>{{ release.title }}</p>
+                        <div
+                            v-if="release.released" 
+                            class="stream-services">
+                            <a
+                                v-for="(streamService, i) in release.streamServices"
+                                :key="i"
+                                target="_blank"
+                                :href="streamService.link">
+                                <i :class="streamService.icon"></i>
+                                <br />
+                                <span>{{ streamService.name }}</span>
+                            </a>
+                        </div>
+                        <div
+                            v-if="!release.released" 
+                            class="coming-soon">
+                            <a :href="typeof release.presaveURL === 'string' ? release.presaveURL : ''" :target="typeof release.presaveURL === 'string' ? '_blank' : ''">
+                                <span>{{ release.releaseDate }}</span>
+                                <br v-if="typeof release.presaveURL === 'string'" />
+                                <span>Click to presave</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="album-information mobile">
+        </a>
+        <div
+            v-if="release.released" 
+            class="album-information mobile">
             <div class="chunk left">
                 <p>
                     <span>Released {{ release.releaseDate }}</span>
@@ -107,13 +124,6 @@
                 }
             };
         },
-        beforeMount() {
-            // if (typeof this.release.background === "string" && this.release.background !== "default") {
-            //     this.setBackground(this.release.background);
-            // } else {
-            //     this.setBackground("default");
-            // }
-        },
         mounted() {
             this.setLayout("promo");
         },
@@ -146,6 +156,10 @@
 
         @media (min-width : $breakpoint-sm) {
             margin-top : 0px;
+        }
+
+        .wrapper-link {
+            text-decoration : none;
         }
 
         .grid {
@@ -247,6 +261,29 @@
                 }
             }
 
+            .coming-soon {
+                margin-top : 17px;
+
+                @media (min-width : $breakpoint-md) {
+                    margin-top : 40px;
+                }
+
+                a {
+                    font-size       : 1.25em;
+                    color           : $color-primary;
+                    text-decoration : none;
+
+                    @media (min-width : $breakpoint-md) {
+                        font-size : 1.5em;
+                    }
+
+                    span:last-child {
+                        margin-top : 10px;
+                        display    : block;
+                    }
+                }
+            }
+
             .inner-block {
                 @media (min-width : $breakpoint-md) {
                     position  : relative;
@@ -311,7 +348,7 @@
                 }
 
                 button {
-                    color         : white;
+                    color         : black;
                     border        : none;
                     font-size     : 1.1em;
                     background    : $color-primary;

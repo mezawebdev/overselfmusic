@@ -13,6 +13,7 @@
 	<div id="home-component">
         <div class="container">
             <div 
+                v-if="OVERSELF.pages.home.featuredVideoId !== 'no-video'"
                 @click="toggleVideo"
                 class="video-promo">
                 <div id="player">
@@ -31,6 +32,13 @@
                 </div>
                 <div v-if="!videoPlaying" class="overlay"></div>
                 <img v-if="!videoPlaying" src="~assets/images/play-btn.png" />
+            </div>
+            <div 
+                v-if="OVERSELF.pages.home.featuredVideoId === 'no-video'"
+                class="image-promo">
+                <nuxt-link :to="OVERSELF.pages.home.cta.linkTo">
+                    <img :src="OVERSELF.pages.home.featuredImageSrc" />
+                </nuxt-link>
             </div>
             <div class="text">
                 <h1>
@@ -95,6 +103,20 @@
 
 <style lang="scss">
     #home-component {
+        .image-promo {
+            img {
+                width      : 80%;
+                margin     : 0 auto;
+                max-width  : 400px;
+                display    : block;
+                box-shadow : 0px 2px 16px rgba(0, 0, 0, 0.5);
+
+                @media (min-width : $breakpoint-md) {
+                    max-width : 500px;
+                }
+            }
+        }
+
         .video-promo {
             width      : 80%;
             height     : 135px;

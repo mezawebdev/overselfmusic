@@ -19,14 +19,13 @@
                 :style="`background-image: url(${ release.artwork.src });`"
                 class="album">
                 <div 
-                    v-if="!release.released"
+                    v-if="!release.released && typeof release.presaveURL === 'undefined'"
                     :class="{ show : release.showComingSoon }"
                     class="coming-soon">
                     <p>Coming Soon.</p>
                 </div>
             </div>
         </div>
-
         <AlbumOverview v-if="albumOverview.active" :album-id="albumOverview.id" />
 	</div>	
 </template>
@@ -81,7 +80,7 @@
             }
 
             @media (min-width : $breakpoint-lg) {
-                grid-template-columns : 1fr 1fr 1fr;
+                grid-template-columns : 1fr 1fr 1fr 1fr;
             }
             
             .album {

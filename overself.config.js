@@ -5,15 +5,15 @@ export default {
                 name: "default",
                 type: "video",
                 src: {
-                    mobile: "../assets/videos/space-bg.mp4",
-                    desktop: "../assets/videos/space-bg.mp4"
+                    mobile: "../assets/videos/everlasting-bg.mp4",
+                    desktop: "../assets/videos/everlasting-bg.mp4"
                 }
             },
             {
                 name: "pulses-streetlights",
                 type: "video",
                 src: {
-                    mobile: "../assets/videos/pulses-bg-m.mp4",
+                    mobile: "../assets/videos/pulses-bg-d.mp4",
                     desktop: "../assets/videos/pulses-bg-d.mp4"
                 }
             },
@@ -37,14 +37,17 @@ export default {
     },
     pages: {
         home: {
-            featuredVideoId: "ZSB5OcKc0w4",
+            // Setting featuredVideoId to "no-video" will hide the youtube component.
+            // doing so, the page will expect a featuredImageSrc prop with the image src.
+            featuredVideoId: "no-video",
+            featuredImageSrc: "/assets/images/everlasting-artwork.jpg",
             cta: {
                 copy: `
-                    <span>DISCOVERY</span>
+                    <span>EVERLASTING</span>
                     <br />
-                    listen now
+                    oct. 28th
                 `,
-                linkTo: "/music/discovery"
+                linkTo: "/music/everlasting"
             }
         },
         about: {
@@ -67,6 +70,301 @@ export default {
         },
         music: {
             releases: [
+                {
+                    title: "Everlasting",
+                    description: "",
+                    path: "everlasting",
+                    background: "default",
+                    released: false,
+                    presaveURL: "https://distrokid.com/hyperfollow/overself/everlasting",
+                    releaseDate: "October 28, 2020",
+                    artwork: {
+                        src: "../assets/images/everlasting-artwork.jpg",
+                        artist: "Real Theory"
+                    },
+                    streamServices: [],
+                    personnel: {
+                        production: {
+                            recording: {
+                                name: "Alex Jacobelli",
+                                website: {
+                                    text: "sunsickstudio.com",
+                                    link: "http://sunsickstudio.com"
+                                }
+                            },
+                            mastering: {
+                                name: "Audiosiege",
+                                website: {
+                                    text: "audiosiege.com",
+                                    link: "https://audiosiege.com/"
+                                }
+                            }
+                        },
+                        band: {
+                            members: [
+                                {
+                                    name: "Peter Tueller",
+                                    contribution: "Vocals, Guitars, Synths"
+                                },
+                                {
+                                    name: "Diego Guardado",
+                                    contribution: "Guitar"
+                                },
+                                {
+                                    name: "Oscar Paez",
+                                    contribution: "Bass"
+                                },
+                                {
+                                    name: "Alex Meza",
+                                    contribution: "Drums"
+                                }
+                            ]
+                        }
+                    },
+                    music: {
+                        tracks: [
+                            {
+                                name: "Everlasting",
+                                uniqueTag: "everlasting",
+                                lyrics: `
+                                    Hopelessly content I know I’ll
+                                    Learn to live a life of meaning
+                                    Built from this impermanence
+                                    This disarray is everlasting
+                                    <br /><br />
+                                    Free fall hasn’t felt this good
+                                    Since you’ve left just like you always said I would
+                                    I am still everlasting
+                                    <br /><br />
+                                    I’ll find my place
+                                    Between the scenes
+                                    I guess that life
+                                    Isn’t always as it seems
+                                    I thought I had
+                                    A time and place
+                                    But now there’s space
+                                    Beyond the days
+                                    <br /><br />
+                                    I’ll take the back way out
+                                    For the thousandth time
+                                    I thought I would’ve learned
+                                    My only crime
+                                    A dramatic copping out
+                                    Erased without a doubt
+                                    But now there’s space
+                                    Beyond the days
+                                `
+                            }
+                        ]
+                    }
+                },
+                {
+                    title: "Memories",
+                    description: "",
+                    path: "memories",
+                    background: "default",
+                    released: true,
+                    releaseDate: "August 10, 2020",
+                    artwork: {
+                        src: "../assets/images/memories-artwork.jpg",
+                        artist: "Real Theory"
+                    },
+                    streamServices: [
+                        {
+                            name: "Apple Music",
+                            link: "https://music.apple.com/us/album/memories/1525051344?i=1525051345",
+                            icon: "fab fa-apple"
+                        },
+                        {
+                            name: "Spotify",
+                            link: "https://open.spotify.com/track/0VZiHAx3sT65EYQU2P8xtF?si=1puF6NqYSuGicPPQv_sjgw",
+                            icon: "fab fa-spotify"
+                        },
+                        {
+                            name: "Youtube",
+                            link: "https://www.youtube.com/watch?v=Z7TZc3OmKYI",
+                            icon: "fab fa-youtube"
+                        },
+                        {
+                            name: "Bandcamp",
+                            link: "https://overself.bandcamp.com/track/memories",
+                            icon: "fab fa-bandcamp"
+                        }
+                    ],
+                    personnel: {
+                        production: {
+                            recording: {
+                                name: "Alex Jacobelli",
+                                website: {
+                                    text: "sunsickstudio.com",
+                                    link: "http://sunsickstudio.com"
+                                }
+                            },
+                            mastering: {
+                                name: "Audiosiege",
+                                website: {
+                                    text: "audiosiege.com",
+                                    link: "https://audiosiege.com/"
+                                }
+                            }
+                        },
+                        band: {
+                            members: [
+                                {
+                                    name: "Peter Tueller",
+                                    contribution: "Vocals, Guitars, Synths"
+                                },
+                                {
+                                    name: "Diego Guardado",
+                                    contribution: "Guitar"
+                                },
+                                {
+                                    name: "Oscar Paez",
+                                    contribution: "Bass"
+                                },
+                                {
+                                    name: "Alex Meza",
+                                    contribution: "Drums"
+                                }
+                            ]
+                        }
+                    },
+                    music: {
+                        tracks: [
+                            {
+                                name: "Memories",
+                                uniqueTag: "memories",
+                                lyrics: `
+                                    Listen to the sounds so far away
+                                    Distant memories of solemn days
+                                    Muffled rushing, a timid cry
+                                    Hazy mist clouds a grayer sky
+                                    <br /><br />
+                                    Find a place long gone
+                                    Never mind bear on
+                                    <br /><br />
+                                    Touch of grace too tough to taste
+                                    Holy spells and hollow praise
+                                    Knowing words to a different song
+                                    Dissonance can't last for long
+                                    <br /><br />
+                                    Find a place long gone
+                                    Never mind bear on
+                                    <br /><br />
+                                    Find a place long gone
+                                    Never mind bear on
+                                `
+                            }
+                        ]
+                    }
+                },
+                {
+                    title: "Symptomatic",
+                    description: "",
+                    path: "symptomatic",
+                    background: "default",
+                    released: true,
+                    releaseDate: "June 22, 2020",
+                    artwork: {
+                        src: "../assets/images/symptomatic-artwork.jpg",
+                        artist: "Real Theory"
+                    },
+                    streamServices: [
+                        {
+                            name: "Apple Music",
+                            link: "https://music.apple.com/us/album/symptomatic/1517064783?i=1517064784",
+                            icon: "fab fa-apple"
+                        },
+                        {
+                            name: "Spotify",
+                            link: "https://open.spotify.com/track/1zRZbClFYEIKfI4DCfjXZi?si=Pzvkq2QZQMKRwDQQ8AeTIg",
+                            icon: "fab fa-spotify"
+                        },
+                        {
+                            name: "Youtube",
+                            link: "https://youtu.be/n4QMz5EFK_c",
+                            icon: "fab fa-youtube"
+                        },
+                        {
+                            name: "Bandcamp",
+                            link: "https://overself.bandcamp.com/track/symptomatic",
+                            icon: "fab fa-bandcamp"
+                        }
+                    ],
+                    personnel: {
+                        production: {
+                            recording: {
+                                name: "Alex Jacobelli",
+                                website: {
+                                    text: "sunsickstudio.com",
+                                    link: "http://sunsickstudio.com"
+                                }
+                            },
+                            mastering: {
+                                name: "Audiosiege",
+                                website: {
+                                    text: "audiosiege.com",
+                                    link: "https://audiosiege.com/"
+                                }
+                            }
+                        },
+                        band: {
+                            members: [
+                                {
+                                    name: "Peter Tueller",
+                                    contribution: "Vocals, Guitars, Synths"
+                                },
+                                {
+                                    name: "Diego Guardado",
+                                    contribution: "Guitar"
+                                },
+                                {
+                                    name: "Oscar Paez",
+                                    contribution: "Bass"
+                                },
+                                {
+                                    name: "Alex Meza",
+                                    contribution: "Drums"
+                                }
+                            ]
+                        }
+                    },
+                    music: {
+                        tracks: [
+                            {
+                                name: "Symptomatic",
+                                uniqueTag: "symptomatic",
+                                lyrics: `
+                                    Chills in summer heat
+                                    Thoughts too loud to speak
+                                    What is wrong with me
+                                    Silently I scream
+                                    <br /><br />
+                                    I know I get so overwhelmed at times
+                                    Remain while I retreat
+                                    Instinctively shut my eyes
+                                    To find some peace
+                                    My fears
+                                    Too near
+                                    Not here
+                                    <br /><br />
+                                    Still as night, why the fight or flight
+                                    How can I know which lie is mine
+                                    Symptomatic crime
+                                    Watch my fate align
+                                    <br /><br />
+                                    I know I get so overwhelmed at times
+                                    Remain while I retreat
+                                    Instinctively shut my eyes
+                                    To find some peace
+                                    My fears
+                                    Too near
+                                    Not here
+                                `
+                            }
+                        ]
+                    }
+                },
                 {
                     title: "Discovery",
                     description: "",
