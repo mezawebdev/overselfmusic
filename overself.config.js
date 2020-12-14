@@ -45,7 +45,7 @@ export default {
                 copy: `
                     <span>EVERLASTING</span>
                     <br />
-                    oct. 28th
+                    out now
                 `,
                 linkTo: "/music/everlasting"
             }
@@ -75,14 +75,35 @@ export default {
                     description: "",
                     path: "everlasting",
                     background: "default",
-                    released: false,
-                    presaveURL: "https://distrokid.com/hyperfollow/overself/everlasting",
+                    released: true,
+                    // presaveURL: "https://distrokid.com/hyperfollow/overself/everlasting",
                     releaseDate: "October 28, 2020",
                     artwork: {
                         src: "../assets/images/everlasting-artwork.jpg",
                         artist: "Real Theory"
                     },
-                    streamServices: [],
+                    streamServices: [
+                        {
+                            name: "Apple Music",
+                            link: "https://music.apple.com/us/album/everlasting-single/1536288135?uo=4",
+                            icon: "fab fa-apple"
+                        },
+                        {
+                            name: "Spotify",
+                            link: "https://open.spotify.com/track/55o3ONWJ1IJTFvlr3tfWmc?si=xPeEV55mRZmvJRfXWtBw-A",
+                            icon: "fab fa-spotify"
+                        },
+                        {
+                            name: "Youtube",
+                            link: "https://www.youtube.com/watch?v=_kdKHr9hklQ",
+                            icon: "fab fa-youtube"
+                        },
+                        {
+                            name: "Bandcamp",
+                            link: "https://overself.bandcamp.com/track/everlasting",
+                            icon: "fab fa-bandcamp"
+                        }
+                    ],
                     personnel: {
                         production: {
                             recording: {
