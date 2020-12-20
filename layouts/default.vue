@@ -90,6 +90,7 @@
         font-weight : $font-weight-p;
         line-height : $m-line-height-p;
         font-size   : $m-font-size-p;
+        color       : $color-primary;
 
         &.white {
             color : $white;
@@ -109,7 +110,7 @@
         font-size      : $m-font-size-h1;
         line-height    : $m-line-height-h1;
         letter-spacing : $letter-spacing;
-        color          : $white !important;
+        color          : $color-primary;
         text-shadow    : $text-shadow-main;
         line-height    : $m-line-height-h1;
 
