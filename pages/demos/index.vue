@@ -60,11 +60,7 @@
             },
             load(url) {
                 this.audioObj = new Audio(url);
-
-                this.audioObj.addEventListener("canplaythrough", event => {
-                    // audioObj.play();
-                    this.demosLoaded = true;
-                });
+                this.demosLoaded = true;
             },
             play() {
                 this.audioObj.play();
