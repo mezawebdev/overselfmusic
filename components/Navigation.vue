@@ -14,7 +14,7 @@
         <img 
             alt="overself band music" 
             class="logo" 
-            src="/assets/images/logo-2020.png" />
+            src="/assets/images/Logo-White.png" />
         <div class="container">
             <div class="nav-links">
                 <!-- <a 
@@ -27,16 +27,17 @@
                 <nuxt-link 
                     v-if="layout === 'promo'"
                     to="/music" 
+                    class="back-to-music"
                     exact>
                     <i class="fas fa-chevron-left"></i>
-                    BACK TO ALL MUSIC
+                    Browse all music
                 </nuxt-link>
                 <nuxt-link 
                     v-if="layout === 'main'"
                     active-class="active" 
                     to="/" 
                     exact>
-                    HOME
+                    home
                 </nuxt-link>
                 <span v-if="layout === 'main'">&middot;</span>
                 <router-link 
@@ -44,7 +45,7 @@
                     active-class="active" 
                     to="/about" 
                     exact>
-                    ABOUT
+                    about
                 </router-link>
                 <span v-if="layout === 'main'">&middot;</span>
                 <nuxt-link 
@@ -52,17 +53,17 @@
                     active-class="active" 
                     to="/music" 
                     exact>
-                    MUSIC
+                    music
                 </nuxt-link>
-                <span v-if="layout === 'main'">&middot;</span>
-                <router-link 
+                <!-- <span v-if="layout === 'main'">&middot;</span> -->
+                <!-- <router-link 
                     v-if="layout === 'main'"
                     active-class="active" 
                     to="/live" 
                     class="live"
                     exact>
                     LIVE
-                </router-link>
+                </router-link> -->
                 <!-- <span v-if="layout === 'main'">&middot;</span>
                 <nuxt-link 
                     v-if="layout === 'main'"
@@ -79,7 +80,7 @@
                     class="contact" 
                     to="/contact" 
                     exact>
-                    CONTACT
+                    contact
                 </nuxt-link>
             </div>
             <div
@@ -162,7 +163,7 @@
             transform  : translateX(-50%);
             left       : 50%;
             margin-top : 35px;
-            width      : 160px;
+            width      : 200px;
             position   : relative;
             filter     : $nav-drop-shadow;
         }
@@ -173,6 +174,12 @@
                 margin-top : 15px;
                 text-align : center;
                 color      : $color-primary;
+
+                .back-to-music {
+                    margin-top  : 5px;
+                    font-size   : 0.9em;
+                    font-weight : 400
+                }
 
                 i {
                     font-size : 0.9em;

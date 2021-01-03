@@ -37,7 +37,7 @@
     export default {
         head() {
             return {
-                title : "OVERSELF | Live"
+                title: `${ this.OVERSELF.global.siteTitle } | Live`
             }
         },
         computed : mapGetters([

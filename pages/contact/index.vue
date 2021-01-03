@@ -44,7 +44,7 @@
     export default {
         head() {
             return {
-                title : "OVERSELF | Contact"
+                title: `${ this.OVERSELF.global.siteTitle } | Contact`
             }
         },
         name  : "contact",
@@ -99,7 +99,7 @@
         .error {
             width         : 100%;
             text-align    : center;
-            font-size     : 1.4em;
+            // font-size     : 1.4em;
             color         : rgb(31, 204, 15);
             margin-bottom : 25px;
         }
@@ -119,7 +119,7 @@
 
                 label {
                     color     : $color-primary;
-                    font-size : 1.3em;
+                    // font-size : 1.3em;
                 }
 
                 input,
@@ -147,7 +147,7 @@
                 border        : none;
                 border-radius : 3px;
                 box-shadow    : $box-shadow-main;
-                font-size     : 1.4em;
+                // font-size     : 1.4em;
                 padding       : 10px 20px;
                 color         : black;
 

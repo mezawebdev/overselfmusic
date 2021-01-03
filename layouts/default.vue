@@ -62,8 +62,10 @@
 
 <style lang="scss">
     body {
-        overflow-x : hidden;
-        background : rgb(10, 10, 10);
+        overflow-x  : hidden;
+        font-weight : $font-weight-p;
+        background  : rgb(10, 10, 10);
+        line-height : 1;
     }
 
     p,
@@ -88,7 +90,7 @@
 
     p {
         font-weight : $font-weight-p;
-        line-height : $m-line-height-p;
+        line-height : $line-height;
         font-size   : $m-font-size-p;
         color       : $color-primary;
 

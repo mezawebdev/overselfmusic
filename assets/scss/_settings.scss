@@ -9,6 +9,7 @@
 ||----------------------------------||
 */
 
+
 /*
 ||--------------------------||
 ||	     Breakpoints     	||
@@ -25,7 +26,8 @@ $breakpoint-lg  : 1200px;
 ||--------------------------||
 */
 // $color-primary : #D83F38;
-$color-primary : #ebeca5;
+// $color-primary : #ebeca5;
+$color-primary : rgb(245, 245, 245);
 $white         : rgb(250, 250, 250);
 $black         : rgb(50, 50, 50);
 
@@ -35,17 +37,19 @@ $black         : rgb(50, 50, 50);
 ||--------------------------||
 */
 
-$font-family      : futura-pt-condensed, helvetica, sans-serif;
+// $font-family      : futura-pt-condensed, helvetica, sans-serif;
+$font-family      : "Assistant", helvetica, sans-serif;
 $letter-spacing   : 1px;
-$font-weight-p    : 300;
+$font-weight-p    : 100;
 $text-shadow-main : 0px 2px 5px rgba(0, 0, 0, 0.5);
 $m-font-size-h1   : 2em;
 $d-font-size-h1   : 3em;
 $m-font-size-h4   : 1.25em;
-$m-font-size-p    : 0.85em;
+$m-font-size-p    : 1em;
 $m-line-height-h1 : 40px;
 $d-line-height-h1 : 60px;
 $m-line-height-p  : 20px;
+$line-height      : 1.5;
 
 
 /*

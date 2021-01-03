@@ -51,7 +51,7 @@
         name      : "press",
         head() {
             return {
-                title : "OVERSELF | Press"
+                title: `${ this.OVERSELF.global.siteTitle } | Press`
             }
         },
         props     : [],

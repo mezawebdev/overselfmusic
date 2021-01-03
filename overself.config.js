@@ -1,12 +1,13 @@
 export default {
     global: {
+        siteTitle: "o v e r s e l f",
         backgrounds: [
             {
                 name: "default",
                 type: "video",
                 src: {
-                    mobile: "../assets/videos/everlasting-bg.mp4",
-                    desktop: "../assets/videos/everlasting-bg.mp4"
+                    mobile: "../assets/videos/os-bg-2.mp4",
+                    desktop: "../assets/videos/os-bg-2.mp4"
                 }
             },
             {
@@ -32,6 +33,14 @@ export default {
                     mobile: "../assets/videos/space-bg.mp4",
                     desktop: "../assets/videos/space-bg.mp4"
                 }
+            },
+            {
+                name: "everlasting",
+                type: "video",
+                src: {
+                    mobile: "../assets/videos/everlasting-bg.mp4",
+                    desktop: "../assets/videos/everlasting-bg.mp4"
+                }
             }
         ]
     },
@@ -39,13 +48,13 @@ export default {
         home: {
             // Setting featuredVideoId to "no-video" will hide the youtube component.
             // doing so, the page will expect a featuredImageSrc prop with the image src.
-            featuredVideoId: "no-video",
-            featuredImageSrc: "/assets/images/everlasting-artwork.jpg",
+            featuredVideoId: "Lm3VJVaJKOk",
+            // featuredImageSrc: "/assets/images/everlasting-artwork.jpg",
             cta: {
                 copy: `
-                    <span>EVERLASTING</span>
+                    <span class="heading">Everlasting</span>
                     <br />
-                    out now
+                    <span class="subheader">out now</span>
                 `,
                 linkTo: "/music/everlasting"
             }
@@ -64,8 +73,6 @@ export default {
                 that we wanted to pursue this project. A couple 
                 of months later and ounces of sweat in the practice 
                 room, we released our first EP, Pulses.
-                <br /><br />
-                Bookings: <a style="color:#D83F38" class="overself-email" href="mailto:band@overselfmusic.com">band@overselfmusic.com</a>
             `
         },
         music: {
@@ -74,7 +81,7 @@ export default {
                     title: "Everlasting",
                     description: "",
                     path: "everlasting",
-                    background: "default",
+                    background: "everlasting",
                     released: true,
                     // presaveURL: "https://distrokid.com/hyperfollow/overself/everlasting",
                     releaseDate: "October 28, 2020",

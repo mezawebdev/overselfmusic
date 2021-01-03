@@ -103,7 +103,7 @@
     export default {
         head() {
             return {
-                title: `OVERSELF | ${ this.release.title }`
+                title: `${ this.OVERSELF.global.siteTitle } | ${ this.release.title }`
             }
         },
         name: "release-page",
@@ -125,6 +125,7 @@
             };
         },
         mounted() {
+            window.scrollTo(0, 0);
             this.setLayout("promo");
         },
         methods : {
@@ -156,6 +157,10 @@
 
         @media (min-width : $breakpoint-sm) {
             margin-top : 0px;
+        }
+
+        a {
+            text-decoration : none;
         }
 
         .wrapper-link {
@@ -192,13 +197,14 @@
             p {
                 color       : $color-primary;
                 display     : block;
-                margin-top  : 25px;
-                font-size   : 2.5em;
+                margin-top  : 10px;
+                font-size   : 2em;
                 text-shadow : $text-shadow-main;
 
                 @media (min-width : $breakpoint-md) {
-                    font-size  : 5em;
-                    margin-top : 0px;
+                    font-size   : 4em;
+                    margin-top  : 0px;
+                    line-height : 1;
                 }
             }
 
@@ -209,11 +215,11 @@
                 // grid-gap              : 1px;
                 justify-content : center;
                 box-shadow      : 0px 4px 16px rgba(0, 0, 0, 0.5);
-                margin-top      : 25px;
+                margin-top      : 20px;
 
                 @media (min-width : 825px) {
                     justify-content       : left;
-                    margin-top            : 60px;
+                    margin-top            : 25px;
                     grid-template-columns : 85px 85px 85px 85px;
                     grid-gap              : 10px;
                     box-shadow            : none;
@@ -222,12 +228,13 @@
                 a {
                     border          : none;
                     color           : $black;
-                    font-size       : 1.75em;
+                    font-size       : 1.25em;
                     background      : $color-primary;
                     // border-radius   : 3px;
                     // box-shadow      : 0px 4px 16px rgba(0, 0, 0, 0.5);
                     text-align      : center;
                     padding         : 5px 0px;
+                    font-weight     : 400;
                     text-decoration : none !important;
                     line-height     : 10px;
                     border-right    : 1px solid rgba(0, 0, 0, 0.25);
@@ -257,6 +264,10 @@
                         text-transform  : uppercase;
                         text-decoration : none !important;
                         font-size       : 0.45em;
+
+                        @media (min-width : $breakpoint-md) {
+                            font-size : 0.3em;
+                        }
                     }
                 }
             }
@@ -325,8 +336,8 @@
 
             p {
                 margin-top  : 0px;
-                font-size   : 1.1em;
-                line-height : 1.1em;
+                // font-size   : 1.1em;
+                // line-height : 1.1em;
                 text-align  : left;
                 color       : $color-primary;
 
@@ -337,8 +348,9 @@
                 }
 
                 span {
-                    font-size       : 1.3em;
-                    text-decoration : underline;
+                    // font-size       : 1.3em;
+                    font-weight : 400;
+                    // text-decoration : underline;
 
                     &.disclaimer {
                         font-size       : 1em;
@@ -350,7 +362,7 @@
                 button {
                     color         : black;
                     border        : none;
-                    font-size     : 1.1em;
+                    font-size     : 0.9em;
                     background    : $color-primary;
                     margin-bottom : 5px;
                     border-radius : 3px;

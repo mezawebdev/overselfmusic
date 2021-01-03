@@ -9,7 +9,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: "OVERSELF",
+    title: "o v e r s e l f",
     script: [
       { src: 'https://www.googletagmanager.com/gtag/js?id=UA-145085741-1', async: true },
       { src: 'https://kit.fontawesome.com/a0f231f0e6.js' }
@@ -17,14 +17,15 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { name: 'title', content: 'OVERSELF' },
+      { name: 'title', content: 'o v e r s e l f' },
       { name: 'description', content: 'OVERSELF, 4-piece band from San Diego, CA.' },
       { name: 'keywords', content: 'Overself, over self, music, band, san diego, rock, shoegaze, pulses, post-punk, post-rock' },
       { hid: 'description', name: 'description', content: 'Overself is a group consisting of multi-instrumentalist Peter Tueller, guitarist Diego Guardado, bassist Oscar Paez and drummer Alex Meza. The group started in mid-2019, in San Diego, California. After the ending of our previous musical projects, we decided to get together again and continue making music that we love. After a couple of jam sessions, it became clear that the chemistry was real and that we wanted to pursue this project. A couple of months later and ounces of sweat in the practice room, we released our first EP, Pulses.' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://use.typekit.net/lol2dkn.css' }
+      { rel: 'icon', type: 'image/png', href: '/favicon.png' },
+      { rel: 'stylesheet', href: 'https://use.typekit.net/lol2dkn.css' },
+      { rel: 'preconnect', href: 'https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;700&display=swap', rel: 'stylesheet' }
     ]
   },
   server: {

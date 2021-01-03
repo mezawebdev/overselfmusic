@@ -48,7 +48,6 @@
                     </a>
                 </h1>
             </div>
-            <!-- <img class="pulses-logo" src="~assets/images/pulses.png" /> -->
         </div>
 	</div>	
 </template>
@@ -57,22 +56,16 @@
     export default {
         head() {
             return {
-                title: "OVERSELF | Home"
+                title: `${ this.OVERSELF.global.siteTitle } | Home`
             }
         },
         name: "example",
-        props: [],
-        watch: {
-        },
         data() {
             return {
                 player: null,
                 videoPlaying: false,
                 done: false
             };
-        },
-		created() {},
-        mounted() {
         },
         methods : {
             onPlayerReady(event) {
@@ -188,11 +181,17 @@
             text-shadow : $text-shadow-main;
 
             h1 {
-                line-height : 35px;
-                font-size : 1em !important;
+                line-height : 1;
+                font-size   : 1em !important;
 
                 span {
-                    font-size : 1.6em;
+                    &.heading {
+                        font-size : 1em;
+                    }
+
+                    &.subheader {
+                        font-size : 0.5em;
+                    }
                 }
 
                 a {

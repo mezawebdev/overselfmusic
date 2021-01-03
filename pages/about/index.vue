@@ -17,7 +17,7 @@
     export default {
         head() {
             return {
-                title : "OVERSELF | About"
+                title: `${ this.OVERSELF.global.siteTitle } | About`
             }
         },
         mounted() {
@@ -48,7 +48,7 @@
             .text {
                 color          : $color-primary;
                 box-shadow     : $box-shadow-main;
-                font-size      : 1.5em;
+                // font-size      : 1.5em;
                 background     : rgba(25, 25, 25, 0.5);
                 padding        : 15px;
                 margin-top     : -5px;
@@ -59,7 +59,7 @@
                 }
 
                 p {
-                    line-height : 1.3em;
+                    // line-height : 1.3em;
                     margin      : auto;
 
                     a {
