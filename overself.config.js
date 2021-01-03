@@ -62,17 +62,11 @@ export default {
         about: {
             bandPicture: "/assets/images/overself.jpeg",
             biography: `
-                Overself is a band consisting of Peter Tueller, 
-                drummer Alex Meza, bassist Oscar Paez and
-                guitarist Diego Guardado. The group started in 
-                mid-2019, in San Diego, California. After the 
-                ending of our previous musical projects, we 
-                decided to get together again and continue making 
-                music that we love. After a couple of jam sessions,
-                it became clear that the chemistry was real and 
-                that we wanted to pursue this project. A couple 
-                of months later and ounces of sweat in the practice 
-                room, we released our first EP, Pulses.
+                Overself is exploring the complexities of the human condition through music with topics often found in eastern mysticism such as transcendence, duality, impermanence, isolation, vulnerability, self-realization and death. The band consists of Peter Tueller, Alex Meza, Diego Guardado and Oscar Paez. Drawing from influences rooted in shoegaze, post-hardcore, post-rock and dream pop, Overself employs a sound that is both explosive and sensitive. 
+                <br /><br />
+                The origins of Overself reside in the underground San Diego rock and indie scene. Peter, Alex, Diego, and Oscar all participated in multiple bands that were very active in the scene, but ultimately discovered that they were the most productive and inspired when working together. 2019 found them working tirelessly to define their sound and goals, and after a prolific year they released their debut album “Pulses.”
+                <br /><br />
+                Overself incorporates dreamy guitars, soft vocals, retro synths, and ambient sounds combined with sudden distorted guitars, energetic drums and experimental progressions to create a sonic representation of duality, that merges two different emotions to ultimately produce a notion of oneness.            
             `
         },
         music: {
