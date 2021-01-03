@@ -18,7 +18,7 @@ module.exports = {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { name: 'title', content: 'o v e r s e l f' },
-      { name: 'image', content: 'https://overselfmusic.com/meta-image.png' }
+      { name: 'image', content: 'https://overselfmusic.com/meta-image.png' },
       { name: 'keywords', content: 'Overself, over self, music, band, san diego, rock, shoegaze, pulses, post-punk, post-rock' },
       { hid: 'description', name: 'description', content: 'Overself is exploring the complexities of the human condition through music with topics often found in eastern mysticism such as transcendence, duality, impermanence, isolation, vulnerability, self-realization and death. The band consists of Peter Tueller, Alex Meza, Diego Guardado and Oscar Paez. Drawing from influences rooted in shoegaze, post-hardcore, post-rock and dream pop, Overself employs a sound that is both explosive and sensitive. The origins of Overself reside in the underground San Diego rock and indie scene. Peter, Alex, Diego, and Oscar all participated in multiple bands that were very active in the scene, but ultimately discovered that they were the most productive and inspired when working together. 2019 found them working tirelessly to define their sound and goals, and after a prolific year they released their debut album “Pulses.” Overself incorporates dreamy guitars, soft vocals, retro synths, and ambient sounds combined with sudden distorted guitars, energetic drums and experimental progressions to create a sonic representation of duality, that merges two different emotions to ultimately produce a notion of oneness.' },
       {
