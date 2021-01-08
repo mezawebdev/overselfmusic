@@ -34,6 +34,10 @@
             margin-top : 50px;
         }
 
+        strong {
+            font-weight : 400;
+        }
+
         .container {
             @media (min-width : $breakpoint-md) {
                 display               : grid;

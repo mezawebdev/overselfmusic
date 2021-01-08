@@ -1,7 +1,6 @@
-const path = require("path");
-const fs = require("fs");
-const env = require("./env.js");
 require("dotenv").config();
+const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 
 module.exports = {
   mode: 'universal',
@@ -12,7 +11,8 @@ module.exports = {
     title: "o v e r s e l f",
     script: [
       { src: 'https://www.googletagmanager.com/gtag/js?id=UA-145085741-1', async: true },
-      { src: 'https://kit.fontawesome.com/a0f231f0e6.js' }
+      { src: 'https://kit.fontawesome.com/a0f231f0e6.js' },
+      { src: "https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js", type: "text/javascript" }
     ],
     meta: [
       { charset: 'utf-8' },
@@ -121,6 +121,14 @@ module.exports = {
       '~/assets/scss/_functions.scss'
     ]
   },
+  /*
+  ** Server Middleware (API Endpoints)
+  */
+  serverMiddleware: [
+    bodyParser.json(),
+    cookieParser(),
+    "~/server/api/routes.js"
+  ],
   /*
   ** Server Configuration
   */

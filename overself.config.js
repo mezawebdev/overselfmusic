@@ -62,11 +62,11 @@ export default {
         about: {
             bandPicture: "/assets/images/overself.jpeg",
             biography: `
-                Overself is exploring the complexities of the human condition through music with topics often found in eastern mysticism such as transcendence, duality, impermanence, isolation, vulnerability, self-realization and death. The band consists of Peter Tueller, Alex Meza, Diego Guardado and Oscar Paez. Drawing from influences rooted in shoegaze, post-hardcore, post-rock and dream pop, Overself employs a sound that is both explosive and sensitive. 
+                <strong>Overself</strong> is exploring the complexities of the human condition through music with topics often found in <strong>eastern mysticism</strong> such as <strong>transcendence</strong>, <strong>duality</strong>, <strong>impermanence</strong>, <strong>isolation</strong>, <strong>vulnerability</strong>, <strong>self-realization</strong> and <strong>death</strong>. The band consists of <strong>Peter Tueller</strong>, <strong>Alex Meza</strong>, <strong>Diego Guardado</strong> and <strong>Oscar Paez</strong>. Drawing from influences rooted in <strong>shoegaze</strong>, <strong>post-hardcore</strong>, <strong>post-rock</strong> and <strong>dream pop</strong>, <strong>Overself</strong> employs a sound that is both explosive and sensitive. 
                 <br /><br />
-                The origins of Overself reside in the underground San Diego rock and indie scene. Peter, Alex, Diego, and Oscar all participated in multiple bands that were very active in the scene, but ultimately discovered that they were the most productive and inspired when working together. 2019 found them working tirelessly to define their sound and goals, and after a prolific year they released their debut album “Pulses.”
+                The origins of <strong>Overself</strong> reside in the underground <strong>San Diego</strong> rock and indie scene. <strong>Peter</strong>, <strong>Alex</strong>, <strong>Diego</strong>, and <strong>Oscar</strong> all participated in multiple bands that were very active in the scene, but ultimately discovered that they were the most productive and inspired when working together. 2019 found them working tirelessly to define their sound and goals, and after a prolific year they released their debut album “<strong>Pulses</strong>.”
                 <br /><br />
-                Overself incorporates dreamy guitars, soft vocals, retro synths, and ambient sounds combined with sudden distorted guitars, energetic drums and experimental progressions to create a sonic representation of duality, that merges two different emotions to ultimately produce a notion of oneness.            
+                <strong>Overself</strong> incorporates <strong>dreamy guitars</strong>, <strong>soft vocals</strong>, <strong>retro synths</strong>, and <strong>ambient sounds</strong> combined with sudden <strong>distorted guitars</strong>, <strong>energetic drums</strong> and <strong>experimental progressions</strong> to create a sonic representation of <strong>duality</strong>, that merges two different emotions to ultimately produce a notion of <strong>oneness</strong> in their music.            
             `
         },
         music: {
@@ -734,6 +734,9 @@ export default {
                     }
                 }
             ]  
+        },
+        shop: {
+            stripePublicAPIKey: "pk_test_51I5RWHBlBE7zOQ5m8Yl2g3YG5r1632hcHoL9jJIHoVTqX2UULGcZV2GKc9nb59tnnAG9yDpIVvudAiDTuqKLchTY00SV2NA4Zb"
         }
     }
 }   

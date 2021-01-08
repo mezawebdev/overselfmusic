@@ -93,26 +93,26 @@
                         { 'promo' : layout === 'promo' }
                     ]">
                     <div>
-                        <a target="_blank" href="http://instagram.com/overselfmusic">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                    </div>
-                    <div v-if="layout === 'main'">
                         <a target="_blank" href="https://open.spotify.com/artist/5godAayOM6aA2YykaRzcUM?si=FlJ9HnFcQD2asG6M8XfMjw">
                             <i class="fab fa-spotify"></i>
                         </a>
+                    </div>
+                    <div v-if="layout === 'main'">
+                        <a target="_blank" href="https://youtube.com/c/Overself">
+                            <i class="fab fa-youtube"></i>
+                        </a> 
                     </div>
                     <div>
                         <!-- <a target="_blank" href="http://twitter.com/overselfmusic">
                             <i class="fab fa-twitter"></i>
                         </a> -->
-                        <a target="_blank" href="http://overself.bandcamp.com">
-                            <i class="fab fa-bandcamp"></i>
-                        </a> 
+                        <a target="_blank" href="http://instagram.com/overselfmusic">
+                            <i class="fab fa-instagram"></i>
+                        </a>
                     </div>
                     <div>
-                        <a target="_blank" href="http://facebook.com/overselfmusic">
-                            <i class="fab fa-facebook"></i>
+                        <a target="_blank" href="https://vm.tiktok.com/ZMJ76yA2R/">
+                            <i class="fab fa-tiktok"></i>
                         </a>
                     </div>
                 </div>
@@ -122,8 +122,7 @@
 </template>
 
 <script>
-    import { mapGetters } from "vuex";
-    import { mapMutations } from "vuex";
+    import { mapGetters, mapMutations } from "vuex";
 
     export default {
         name: "example",
@@ -268,6 +267,13 @@
                     // position  : fixed;
                     // bottom    : 0px;
                     // position  : absolute;
+                }
+
+
+                &.shop {
+                    transform : none;
+                    left      : 25px;
+                    right     : auto;
                 }
 
                 .grid {

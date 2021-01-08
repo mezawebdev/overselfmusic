@@ -66,6 +66,7 @@
         font-weight : $font-weight-p;
         background  : rgb(10, 10, 10);
         line-height : 1;
+        font-family : $font-family;
     }
 
     p,
