@@ -6,16 +6,16 @@ export default {
                 name: "default",
                 type: "video",
                 src: {
-                    mobile: "../assets/videos/os-bg-2.mp4",
-                    desktop: "../assets/videos/os-bg-2.mp4"
+                    mobile: "/assets/videos/os-bg-3-m.mp4",
+                    desktop: "/assets/videos/os-bg-3.mp4"
                 }
             },
             {
                 name: "pulses-streetlights",
                 type: "video",
                 src: {
-                    mobile: "../assets/videos/pulses-bg-d.mp4",
-                    desktop: "../assets/videos/pulses-bg-d.mp4"
+                    mobile: "/assets/videos/pulses-bg-d.mp4",
+                    desktop: "/assets/videos/pulses-bg-d.mp4"
                 }
             },
             {
@@ -30,16 +30,16 @@ export default {
                 name: "discovery-space",
                 type: "video",
                 src: {
-                    mobile: "../assets/videos/space-bg.mp4",
-                    desktop: "../assets/videos/space-bg.mp4"
+                    mobile: "/assets/videos/space-bg.mp4",
+                    desktop: "/assets/videos/space-bg.mp4"
                 }
             },
             {
                 name: "everlasting",
                 type: "video",
                 src: {
-                    mobile: "../assets/videos/everlasting-bg.mp4",
-                    desktop: "../assets/videos/everlasting-bg.mp4"
+                    mobile: "/assets/videos/everlasting-bg.mp4",
+                    desktop: "/assets/videos/everlasting-bg.mp4"
                 }
             }
         ]
@@ -60,7 +60,7 @@ export default {
             }
         },
         about: {
-            bandPicture: "/assets/images/overself.jpeg",
+            bandPicture: "/assets/images/overself-band.jpg",
             biography: `
                 <strong>Overself</strong> is exploring the complexities of the human condition through music with topics often found in <strong>eastern mysticism</strong> such as <strong>transcendence</strong>, <strong>duality</strong>, <strong>impermanence</strong>, <strong>isolation</strong>, <strong>vulnerability</strong>, <strong>self-realization</strong> and <strong>death</strong>. The band consists of <strong>Peter Tueller</strong>, <strong>Alex Meza</strong>, <strong>Diego Guardado</strong> and <strong>Oscar Paez</strong>. Drawing from influences rooted in <strong>shoegaze</strong>, <strong>post-hardcore</strong>, <strong>post-rock</strong> and <strong>dream pop</strong>, <strong>Overself</strong> employs a sound that is both explosive and sensitive. 
                 <br /><br />
@@ -79,6 +79,7 @@ export default {
                     released: true,
                     // presaveURL: "https://distrokid.com/hyperfollow/overself/everlasting",
                     releaseDate: "October 28, 2020",
+                    spotifyEmbedSrc: "https://open.spotify.com/embed/album/1iBfqmYOV2lIpB1WorpUIc",
                     artwork: {
                         src: "../assets/images/everlasting-artwork.jpg",
                         artist: "Real Theory"
@@ -191,6 +192,7 @@ export default {
                         src: "../assets/images/memories-artwork.jpg",
                         artist: "Real Theory"
                     },
+                    spotifyEmbedSrc: "https://open.spotify.com/embed/track/0VZiHAx3sT65EYQU2P8xtF",
                     streamServices: [
                         {
                             name: "Apple Music",
@@ -291,6 +293,7 @@ export default {
                         src: "../assets/images/symptomatic-artwork.jpg",
                         artist: "Real Theory"
                     },
+                    spotifyEmbedSrc: "https://open.spotify.com/embed/track/1zRZbClFYEIKfI4DCfjXZi",
                     streamServices: [
                         {
                             name: "Apple Music",
@@ -398,6 +401,7 @@ export default {
                         src: "../assets/images/discovery-artwork.jpg",
                         artist: "Real Theory"
                     },
+                    spotifyEmbedSrc: "https://open.spotify.com/embed/track/2a0m29ToIVGGeNlITA1wYP",
                     streamServices: [
                         {
                             name: "Apple Music",
@@ -513,6 +517,7 @@ export default {
                         src: "../assets/images/quiet-moments-artwork.jpg",
                         artist: "Alex Meza"
                     },
+                    spotifyEmbedSrc: "https://open.spotify.com/embed/track/3VhRR8Y1u7n7Ft61Dx2nqt",
                     streamServices: [
                         {
                             name: "Spotify",
@@ -630,6 +635,7 @@ export default {
                         src: "../assets/images/pulses-artwork.jpg",
                         artist: "Adam Flores"
                     },
+                    spotifyEmbedSrc: "https://open.spotify.com/embed/album/0ZQemYKdIuVUw7UV2IN0OG",
                     streamServices: [
                         {
                             name: "Spotify",

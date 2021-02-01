@@ -9,10 +9,6 @@
                 <nuxt />
             </transition>
         </div>
-        <!-- <back-to-top 
-            class="back-to-top" 
-            text="Back to Top">
-        </back-to-top> -->
     </div>
 </template>
 
@@ -20,13 +16,11 @@
     import Navigation from "~/components/Navigation.vue";
     import Background from "~/components/Background.vue";
     import { mapGetters, mapActions, mapMutations } from "vuex";
-    // import BackToTop from "vue-backtotop";
 
     export default {
         components: {
             Navigation,
-            Background,
-            // BackToTop
+            Background
         },
         watch: {
             $route(to, from, next) {
@@ -34,26 +28,29 @@
             }
         },
         beforeMount() {
+            this.setBackground("default");
             this.onRouteChange({ to: { name: "default" } });
         },
         methods: {
             onRouteChange(to) {
-                switch (to.name) {
-                    case "music-release":
-                        let release = this.OVERSELF.pages.music.releases.find(release => { return release.path === this.$route.params.release });
-                        this.setLayout("promo");
-                        this.setBackground(release.background);
-                    break;
-                    default:
-                        this.setLayout("main");
-                        this.setBackground("default");
-                    break;
-                }
+                // switch (to.name) {
+                //     case "music-release":
+                //         let release = this.OVERSELF.pages.music.releases.find(release => { return release.path === this.$route.params.release });
+                //         this.setLayout("promo");
+                //         this.setBackground(release.background);
+                //     break;
+                //     case "shop-item-item" || "shop":
+                //         this.setLayout("shop");
+                //         this.setBackground("default");
+                //     break;
+                //     default:
+                //         this.setLayout("main");
+                //         this.setBackground("default");
+                //     break;
+                // }
             },
             ...mapActions([
-                "setBackground"
-            ]),
-            ...mapMutations([
+                "setBackground",
                 "setLayout"
             ])
         }
@@ -61,6 +58,16 @@
 </script>
 
 <style lang="scss">
+    .fade-enter-active,
+    .fade-leave-active {
+    transition: opacity 0.5s ease;
+    }
+
+    .fade-enter-from,
+    .fade-leave-to {
+    opacity: 0;
+    }
+
     body {
         overflow-x  : hidden;
         font-weight : $font-weight-p;

@@ -34,6 +34,7 @@
     import Vue from "vue";
     import axios from "axios";
     import AlbumOverview from "~/components/AlbumOverview.vue";
+    import { mapActions } from "vuex";
 
     export default {
         head() {
@@ -55,13 +56,16 @@
                 }
             };
         },
-		created() {},
-        mounted() {
+		created() {
+            this.setLayout("main");
         },
         methods : {
             onReleaseClick(release) {
                 this.$router.push(`/music/${ release.path }`);
-            }
+            },
+            ...mapActions({
+                setLayout: "setLayout"
+            })
         }
     };
 </script>

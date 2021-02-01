@@ -25,6 +25,18 @@
                 <div class="block">
                     <div class="inner-block">
                         <p>{{ release.title }}</p>
+                        <div 
+                            v-if="typeof release.spotifyEmbedSrc === 'string'"
+                            class="spotify-embed">
+                            <iframe 
+                                :src="release.spotifyEmbedSrc" 
+                                width="100%" 
+                                height="80" 
+                                frameborder="0" 
+                                allowtransparency="true" 
+                                allow="encrypted-media">
+                            </iframe>
+                        </div>
                         <div
                             v-if="release.released" 
                             class="stream-services">
@@ -97,7 +109,7 @@
 </template>
 
 <script>
-    import { mapMutations, mapActions } from "vuex";
+    import { mapActions } from "vuex";
     import Lyrics from "~/components/Lyrics.vue";
 
     export default {
@@ -141,9 +153,7 @@
                 scrollUnlock();
             },
             ...mapActions([
-                "setBackground"
-            ]),
-            ...mapMutations([
+                "setBackground",
                 "setLayout"
             ])
         },
@@ -191,6 +201,20 @@
 
                 @media (min-width : $breakpoint-md) {
                     width : 80%;
+                }
+            }
+
+            .spotify-embed {
+                margin-top : 15px;
+
+                @media (min-width : $breakpoint-md) {
+                    margin-top : 25px;
+                }
+
+                iframe {
+                    border-radius : 5px;
+                    max-width     : 300px;
+                    box-shadow    : 0px 2px 16px rgba(0, 0, 0, 0.5);
                 }
             }
 

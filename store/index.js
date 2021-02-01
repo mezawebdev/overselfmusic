@@ -28,12 +28,16 @@ export const actions = {
     },
     setBackgroundLoading({ commit }, data) {
         commit("SET_BACKGROUND_LOADING", data);
+    },
+    setLayout({ commit }, data) {
+        commit("SET_LAYOUT", data);
     }
 }
 
 export const mutations = {
-    setLayout(state, layout) {
+    SET_LAYOUT(state, layout) {
         state.layout = layout;
+        console.log(state);
     },
     STORE_SHOWS(state, data) {
         state.shows = data;

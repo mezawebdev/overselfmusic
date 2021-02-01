@@ -48,12 +48,42 @@
                     </a>
                 </h1>
             </div>
+            <div class="spotify">
+                <iframe 
+                    src="https://open.spotify.com/embed/track/55o3ONWJ1IJTFvlr3tfWmc" 
+                    width="100%" 
+                    height="80" 
+                    frameborder="0" 
+                    allowtransparency="true" 
+                    allow="encrypted-media">
+                </iframe>
+            </div>
+            <hr />
+            <div class="body">
+                <HomeSection>
+                    <h3>MORE MUSIC</h3>
+                    <iframe 
+                        src="https://open.spotify.com/embed/playlist/3Kla557ETgKn3bjxmwZ4k9" 
+                        width="100%" 
+                        height="350" 
+                        frameborder="0" 
+                        allowtransparency="true" 
+                        allow="encrypted-media">
+                    </iframe>
+                </HomeSection>
+            </div>
         </div>
 	</div>	
 </template>
 
 <script>
+    import { mapActions } from "vuex";
+    import HomeSection from "~/components/Layout/HomeSection.vue";
+
     export default {
+        components: {
+            HomeSection
+        },
         head() {
             return {
                 title: `${ this.OVERSELF.global.siteTitle } | Home`
@@ -66,6 +96,9 @@
                 videoPlaying: false,
                 done: false
             };
+        },
+        created() {
+            this.setLayout("main");
         },
         methods : {
             onPlayerReady(event) {
@@ -89,13 +122,40 @@
                     this.player.playVideo();
                     this.videoPlaying = true;
                 }
-            }
+            },
+            ...mapActions({
+                setLayout: "setLayout"
+            })
         }
     };
 </script>
 
 <style lang="scss">
     #home-component {
+        color : $white;
+
+        hr {
+            margin        : 50px 0px;
+            border-color  : rgb(230, 230, 230);
+            border-bottom : none;
+            max-width     : 100px;
+            transform     : translate(-50%, 0);
+            text-align    : center;
+            left          : 50%;
+            position      : relative;
+            display       : block;
+        }
+
+        .spotify {
+            margin-top : 25px;
+
+            iframe {
+                border-radius : 5px;
+                box-shadow    : 0px 2px 16px rgba(0, 0, 0, 0.75);
+            }
+        }
+
+
         .image-promo {
             img {
                 width      : 80%;
@@ -139,19 +199,21 @@
             }
 
             .overlay {
-                width      : 100%;
-                height     : 100%;
-                position   : absolute;
-                background : rgba(0, 0, 0, 0.5);
-                top        : 0px;
-                left       : 0px;
-                z-index    : 5;
+                width         : 100%;
+                height        : 100%;
+                border-radius : 5px;
+                position      : absolute;
+                background    : rgba(0, 0, 0, 0.5);
+                top           : 0px;
+                left          : 0px;
+                z-index       : 5;
             }
 
             iframe {
-                width    : 100%;
-                height   : 100%;
-                position : absolute;
+                width         : 100%;
+                border-radius : 5px;
+                height        : 100%;
+                position      : absolute;
             }
         }
 
@@ -177,7 +239,7 @@
             font-size  : 2em;
             color      : $color-primary;
             text-align : center;
-            margin-top : 40px;
+            margin-top : 25px;
             text-shadow : $text-shadow-main;
 
             h1 {
@@ -199,6 +261,10 @@
                     text-decoration : none;
                 }
             }
+        }
+
+        .body {
+            
         }
     }
 </style>

@@ -40,6 +40,7 @@
 
 <script>
     import axios from "axios";
+    import { mapActions } from "vuex";
 
     export default {
         head() {
@@ -60,7 +61,9 @@
                 disabled : false
             };
         },
-		created() {},
+		created() {
+            this.setLayout("main");
+        },
         mounted() {
         },
         methods : {
@@ -88,7 +91,10 @@
                 this.success  = false;
                 this.error    = true;
                 this.disabled = false;
-            }
+            },
+            ...mapActions({
+                setLayout: "setLayout"
+            })
         }
     };
 </script>

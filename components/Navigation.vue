@@ -33,23 +33,31 @@
                     Browse all music
                 </nuxt-link>
                 <nuxt-link 
-                    v-if="layout === 'main'"
+                    v-if="layout !== 'promo'"
                     active-class="active" 
                     to="/" 
                     exact>
                     home
                 </nuxt-link>
-                <span v-if="layout === 'main'">&middot;</span>
+                <!-- <span v-if="layout !== 'promo'">&middot;</span>
                 <router-link 
-                    v-if="layout === 'main'"
+                    v-if="layout !== 'promo'"
+                    active-class="active" 
+                    to="/shop" 
+                    exact>
+                    shop
+                </router-link> -->
+                <span v-if="layout !== 'promo'">&middot;</span>
+                <router-link 
+                    v-if="layout !== 'promo'"
                     active-class="active" 
                     to="/about" 
                     exact>
                     about
                 </router-link>
-                <span v-if="layout === 'main'">&middot;</span>
+                <span v-if="layout !== 'promo'">&middot;</span>
                 <nuxt-link 
-                    v-if="layout === 'main'"
+                    v-if="layout !== 'promo'"
                     active-class="active" 
                     to="/music" 
                     exact>
@@ -73,9 +81,9 @@
                     exact>
                     GALLERY
                 </nuxt-link> -->
-                <span v-if="layout === 'main'">&middot;</span>
+                <span v-if="layout !== 'promo'">&middot;</span>
                 <nuxt-link 
-                    v-if="layout === 'main'"
+                    v-if="layout !== 'promo'"
                     active-class="active" 
                     class="contact" 
                     to="/contact" 
@@ -85,11 +93,11 @@
             </div>
             <div
                 class="social-links"
-                v-if="layout === 'main'">
+                v-if="layout === 'main' || layout === 'shop'">
                 <div 
                     class="grid"
                     :class="[
-                        { 'main' : layout === 'main' },
+                        { 'main' : layout === 'main' || layout === 'shop' },
                         { 'promo' : layout === 'promo' }
                     ]">
                     <div>
@@ -97,15 +105,12 @@
                             <i class="fab fa-spotify"></i>
                         </a>
                     </div>
-                    <div v-if="layout === 'main'">
+                    <div>
                         <a target="_blank" href="https://youtube.com/c/Overself">
                             <i class="fab fa-youtube"></i>
                         </a> 
                     </div>
                     <div>
-                        <!-- <a target="_blank" href="http://twitter.com/overselfmusic">
-                            <i class="fab fa-twitter"></i>
-                        </a> -->
                         <a target="_blank" href="http://instagram.com/overselfmusic">
                             <i class="fab fa-instagram"></i>
                         </a>
@@ -117,6 +122,15 @@
                     </div>
                 </div>
             </div>
+            <button
+                v-if="layout === 'shop'" 
+                @click="$router.push('/shop/cart')"
+                class="cart-btn">
+                <span class="inner">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="amount">{{ cart.items.length }}</span>
+                </span>
+            </button>
         </div>
 	</div>	
 </template>
@@ -126,9 +140,10 @@
 
     export default {
         name: "example",
-        computed: mapGetters([
-            "layout"
-        ]),
+        computed: mapGetters({
+            layout: "layout",
+            cart: "shop/cart"
+        }),
         data() {
             return {
                 prevRoute: null
@@ -250,23 +265,42 @@
                 }
             }
 
-            .social-links {
+            .cart-btn {
                 position      : fixed;
                 bottom        : 15px;
                 right         : 15px;
+                box-shadow    : 0px 2px 16px rgba(0, 0, 0, 0.3);
+                background    : white;
+                width         : 60px;
+                height        : 60px;
+                border-radius : 30px;
+                border        : none;
+                white-space   : nowrap;
+
+                .inner {
+                    i {
+                        font-size : 1.5em;
+                    }
+
+                    .amount {
+                        font-size : 0.9em;
+                    }   
+                }
+            }
+
+            .social-links {
+                position      : fixed;
+                bottom        : 15px;
+                left          : 15px;
                 padding       : 10px;
                 border-radius : 5px;
                 box-shadow    : 0px 2px 16px rgba(0, 0, 0, 0.3);
                 background    : rgba(25, 25, 25, 0.5);
-                // border        : 1px solid rgba(216, 63, 56, 0.15);
 
                 @media (min-width : $breakpoint-md) {
                     transform : translateX(-50%);
                     left      : 50%;
                     display   : table;
-                    // position  : fixed;
-                    // bottom    : 0px;
-                    // position  : absolute;
                 }
 
 
@@ -306,7 +340,7 @@
 
                         a i {
                             color     : $color-primary;
-                            font-size : 2em;
+                            font-size : 1.5em;
                         }
                     }
 

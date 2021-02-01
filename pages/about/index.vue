@@ -14,14 +14,24 @@
 </template>
 
 <script>
+    import { mapActions } from "vuex";
+
     export default {
         head() {
             return {
                 title: `${ this.OVERSELF.global.siteTitle } | About`
             }
         },
+        created() {
+            this.setLayout("main");
+        },
         mounted() {
             this.$forceUpdate();
+        },
+        methods: {
+            ...mapActions({
+                setLayout: "setLayout"
+            })
         }
     }
 </script>

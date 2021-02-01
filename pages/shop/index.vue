@@ -3,6 +3,9 @@
         <div class="container">
             <h1>SHOP</h1>
             <Spinner v-if="!itemsReady" />
+            <RecentlyAddedItem 
+                :itemId="addedItemId"
+                v-if="showRecentlyAddedItem" />
             <div
                 v-show="itemsReady" 
                 class="items">
@@ -17,12 +20,13 @@
                         ref="item"
                         :class="{ selected: itemSelected }"
                         class="item">
-                        <img :src="item.images[0]" />
+                        <img :src="'/assets/images/products/' + item.images[0]" />
                         <div class="item-info">
                             <div>
                                 <span class="item-name">{{ item.name }}</span>
                                 <hr />
-                                <span class="item-price"></span>
+                                <span class="space"> - </span>
+                                <span class="item-price">${{ item.price.unit_amount }}</span>
                             </div>
                         </div>
                     </div>
@@ -36,36 +40,42 @@
     import axios from "axios";
     import Spinner from "~/components/UI/Spinner.vue";
     import { mapActions, mapGetters } from "vuex";
+    import RecentlyAddedItem from "~/components/Shop/RecentlyAddedItem.vue";
 
     export default {
         components: {
-            Spinner
-        },
-        computed: {
-            ...mapGetters([
-                "layout"
-            ])
+            Spinner,
+            RecentlyAddedItem
         },
         data() {
             return {
                 itemsReady: false,
                 items: [],
-                itemSelected: false
+                itemSelected: false,
+                showRecentlyAddedItem: false,
+                addedItemId: null
             }
         },
         created() {
-            console.log(this.layout);
+            // console.log(this.layout);
             this.setLayout("shop");
         },
         mounted() {
+            if (typeof this.$route.query["added-item"] === "string") {
+                setTimeout(() => {
+                    this.addedItemId = this.$route.query.id;
+                    this.showRecentlyAddedItem = true;
+                    this.$router.replace({ query: null });
+                }, 100);
+            }
+
             this.fetchItems();
         },
         methods: {
             async fetchItems() {
                 const query = await axios.get("/api/shop/get-all-items");
-                this.items = query.data.data;
+                this.items = query.data;
                 this.itemsReady = true;
-                console.log(this.items);
             },
             goToItem(item) {
                 if (window.innerWidth < 767) {
@@ -86,9 +96,9 @@
                     });
                 }
             },
-            ...mapActions([
-                "setLayout"
-            ])
+            ...mapActions({
+                setLayout: "setLayout"
+            })
         }
     }
 </script>
@@ -105,7 +115,7 @@
                 border-radius   : 5px;
                 display         : flex;
                 justify-content : center;
-                background      : rgba(200, 200, 200, 0.75);
+                background      : rgba(225, 225, 225, 0.75);
                 width           : 100%;
                 margin-left     : auto;
                 box-shadow      : 0px 2px 10px rgba(0, 0, 0, 0.5);
@@ -138,25 +148,52 @@
 
                 img {
                     max-width : 500px;
+                    height    : 100%;
                     width     : 70%;
                     padding   : 15px;
                     filter    : drop-shadow(0 0 10px rgba(0, 0, 0, 0.25));
                 }
 
                 .item-info {
-                    position        : absolute;
-                    background      : rgba(25, 25, 25, 0.9);
-                    color           : white;
-                    width           : 100%;
-                    height          : 100%;
-                    border-radius   : 5px;
-                    display         : flex;
-                    justify-content : center;
-                    align-items     : center;
-                    font-size       : 1.25em;
-                    font-weight     : bold;
-                    opacity         : 0;
-                    transition      : opacity 0.5s ease-in-out;
+                    position                   : absolute;
+                    background                 : rgba(25, 25, 25, 0.9);
+                    color                      : white;
+                    width                      : 100%;
+                    padding                    : 10px;
+                    border-bottom-right-radius : 5px;
+                    border-bottom-left-radius  : 5px;
+                    display                    : flex;
+                    bottom                     : 0px;
+                    justify-content            : center;
+                    align-items                : center;
+                    font-size                  : 1em;
+                    font-weight                : 400;
+                    box-sizing                 : border-box;
+                    opacity                    : 1;
+                    transition                 : opacity 0.5s ease-in-out;
+
+                    @media (min-width : $breakpoint-md) {
+                        height        : 100%;
+                        opacity       : 0;
+                        font-size     : 1.25em;
+                        border-radius : 5px;
+                    }
+
+                    hr {
+                        display : none;
+
+                        @media (min-width : $breakpoint-md) {
+                            display : block;
+                        }
+                    }
+
+                    .item-name {
+
+                    }
+
+                    .item-price {
+                        font-weight : 200;
+                    }
                 }
             }
         }
