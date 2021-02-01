@@ -8,6 +8,10 @@
     .home-section {
         margin : 25px 0px;
 
+        @media (min-width : $breakpoint-md) {
+            margin : 50px 0px;
+        }
+
         &:first-child {
             margin : 0px;
         }
@@ -15,6 +19,10 @@
         h3 {
             font-size     : 1.6em;
             margin-bottom : 20px;
+
+            @media (min-width : $breakpoint-md) {
+                font-size : 2em;
+            }
         }
 
         iframe {

@@ -144,13 +144,20 @@
             left          : 50%;
             position      : relative;
             display       : block;
+
+            @media (min-width : $breakpoint-md) {
+                // margin : 70px 0px;
+            }
         }
 
         .spotify {
-            margin-top : 25px;
+            margin-top  : 25px;
 
             iframe {
+                max-width     : 300px;
                 border-radius : 5px;
+                display       : block;
+                margin        : 0 auto;
                 box-shadow    : 0px 2px 16px rgba(0, 0, 0, 0.75);
             }
         }
