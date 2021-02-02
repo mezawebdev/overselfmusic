@@ -127,7 +127,7 @@ export default {
                             members: [
                                 {
                                     name: "Peter Tueller",
-                                    contribution: "Vocals, Guitars, Synths"
+                                    contribution: "Guitars, Synths, Backup Vocals"
                                 },
                                 {
                                     name: "Diego Guardado",
@@ -139,7 +139,7 @@ export default {
                                 },
                                 {
                                     name: "Alex Meza",
-                                    contribution: "Drums"
+                                    contribution: "Vocals, Drums"
                                 }
                             ]
                         }
