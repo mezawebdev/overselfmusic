@@ -13,56 +13,54 @@
 	<div 
         id="release-page" 
         class="container">
-        <a 
-            :class="typeof release.presaveURL === 'string' ? 'wrapper-link' : ''"
-            :href="typeof release.presaveURL === 'string' ? release.presaveURL : ''" :target="typeof release.presaveURL === 'string' ? '_blank' : ''">
-            <div class="grid">
-                <div class="block">
-                    <img 
-                        class="artwork" 
-                        :src="release.artwork.src" />
-                </div>
-                <div class="block">
-                    <div class="inner-block">
-                        <p>{{ release.title }}</p>
-                        <div 
-                            v-if="typeof release.spotifyEmbedSrc === 'string'"
-                            class="spotify-embed">
-                            <iframe 
-                                :src="release.spotifyEmbedSrc" 
-                                width="100%" 
-                                height="80" 
-                                frameborder="0" 
-                                allowtransparency="true" 
-                                allow="encrypted-media">
-                            </iframe>
-                        </div>
-                        <div
-                            v-if="release.released" 
-                            class="stream-services">
-                            <a
-                                v-for="(streamService, i) in release.streamServices"
-                                :key="i"
-                                target="_blank"
-                                :href="streamService.link">
-                                <i :class="streamService.icon"></i>
-                                <br />
-                                <span>{{ streamService.name }}</span>
-                            </a>
-                        </div>
-                        <div
-                            v-if="!release.released" 
-                            class="coming-soon">
-                            <a :href="typeof release.presaveURL === 'string' ? release.presaveURL : ''" :target="typeof release.presaveURL === 'string' ? '_blank' : ''">
-                                <span>{{ release.releaseDate }}</span>
-                                <br v-if="typeof release.presaveURL === 'string'" />
-                                <span>Click to presave</span>
-                            </a>
-                        </div>
+        <div class="grid">
+            <div class="block">
+                <img 
+                    class="artwork" 
+                    :src="release.artwork.src" />
+            </div>
+            <div class="block">
+                <div class="inner-block">
+                    <p>{{ release.title }}</p>
+                    <div 
+                        v-if="typeof release.spotifyEmbedSrc === 'string'"
+                        class="spotify-embed">
+                        <iframe 
+                            :src="release.spotifyEmbedSrc" 
+                            width="100%" 
+                            height="80" 
+                            frameborder="0" 
+                            allowtransparency="true" 
+                            allow="encrypted-media">
+                        </iframe>
+                    </div>
+                    <div
+                        v-if="release.released" 
+                        :style="`grid-template-columns: ${ getStreamingServCols() }`"
+                        :class="{ compact: release.streamServices.length <= 2 }"
+                        class="stream-services">
+                        <a
+                            v-for="(streamService, i) in release.streamServices"
+                            :key="i"
+                            target="_blank"
+                            :href="streamService.link">
+                            <i :class="streamService.icon"></i>
+                            <br />
+                            <span>{{ streamService.name }}</span>
+                        </a>
+                    </div>
+                    <div
+                        v-if="!release.released" 
+                        class="coming-soon">
+                        <a :href="typeof release.presaveURL === 'string' ? release.presaveURL : ''" :target="typeof release.presaveURL === 'string' ? '_blank' : ''">
+                            <span>{{ release.releaseDate }}</span>
+                            <br v-if="typeof release.presaveURL === 'string'" />
+                            <span>Click to presave</span>
+                        </a>
                     </div>
                 </div>
             </div>
-        </a>
+        </div>
         <div
             v-if="release.released" 
             class="album-information mobile">
@@ -151,6 +149,18 @@
             closeLyrics() {
                 this.lyrics.active = false;
                 scrollUnlock();
+            },
+            getStreamingServCols() {
+                let cols = this.release.streamServices.length,
+                    i = 0,
+                    str = "";
+
+                while (i < cols) {
+                    str += "1fr ";
+                    i++;
+                }
+
+                return str;
             },
             ...mapActions([
                 "setBackground",
@@ -247,6 +257,15 @@
                     grid-template-columns : 85px 85px 85px 85px;
                     grid-gap              : 10px;
                     box-shadow            : none;
+                }
+
+                &.compact {
+                    max-width : 300px;
+                    margin    : 20px auto 0px auto;
+
+                    @media (min-width : $breakpoint-md) {
+                        margin : 20px 0px 0px 0px;
+                    }
                 }
 
                 a {

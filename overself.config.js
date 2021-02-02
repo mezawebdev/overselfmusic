@@ -72,6 +72,131 @@ export default {
         music: {
             releases: [
                 {
+                    title: "Alive",
+                    description: "",
+                    path: "alive",
+                    background: "alive", 
+                    released: true,
+                    // presaveURL: "https://distrokid.com/hyperfollow/overself/everlasting",
+                    releaseDate: "February 2, 2021",
+                    spotifyEmbedSrc: "https://open.spotify.com/embed/album/3Wi6jCFKpciz9AscUE0Hix",
+                    artwork: {
+                        src: "../assets/images/alive-artwork.jpg",
+                        artist: "Real Theory"
+                    },
+                    streamServices: [
+                        // {
+                        //     name: "Apple Music",
+                        //     link: "https://music.apple.com/us/album/everlasting-single/1536288135?uo=4",
+                        //     icon: "fab fa-apple"
+                        // },
+                        {
+                            name: "Spotify",
+                            link: "https://open.spotify.com/album/3Wi6jCFKpciz9AscUE0Hix?si=OPSbXLy_SQK4C6n1ouS0MA",
+                            icon: "fab fa-spotify"
+                        },
+                        {
+                            name: "Youtube",
+                            link: "https://youtu.be/XYo-RdzWckE",
+                            icon: "fab fa-youtube"
+                        },
+                        // {
+                        //     name: "Bandcamp",
+                        //     link: "https://overself.bandcamp.com/track/everlasting",
+                        //     icon: "fab fa-bandcamp"
+                        // }
+                    ],
+                    personnel: {
+                        production: {
+                            recording: {
+                                name: "Alex Jacobelli",
+                                website: {
+                                    text: "sunsickstudio.com",
+                                    link: "http://sunsickstudio.com"
+                                }
+                            },
+                            mastering: {
+                                name: "Audiosiege",
+                                website: {
+                                    text: "audiosiege.com",
+                                    link: "https://audiosiege.com/"
+                                }
+                            }
+                        },
+                        band: {
+                            members: [
+                                {
+                                    name: "Peter Tueller",
+                                    contribution: "Vocals, Guitars, Synths"
+                                },
+                                {
+                                    name: "Diego Guardado",
+                                    contribution: "Guitar"
+                                },
+                                {
+                                    name: "Oscar Paez",
+                                    contribution: "Bass"
+                                },
+                                {
+                                    name: "Alex Meza",
+                                    contribution: "Drums"
+                                }
+                            ]
+                        }
+                    },
+                    music: {
+                        tracks: [
+                            {
+                                name: "Alive",
+                                uniqueTag: "alive",
+                                lyrics: `
+                                    I don't want to tear my brain apart<br />
+                                    But sometimes I think twice (I don't know you the same)<br />
+                                    Mistakes happen at times<br />
+                                    Still, you're such a drag<br />
+                                    <br /><br />
+                                    My past is alive<br />
+                                    I hate so much to look back<br />
+                                    And remember all the pain inside<br />
+                                    Wasting all my time<br />
+                                    Your heart's cold like<br />
+                                    The blame you like to mask<br />
+                                    I'll pretend that it's alright to want<br />
+                                    To end my life tonight<br />
+                                    <br /><br />
+                                    You call me once at night<br />
+                                    But my head just wasn't right (I don't know you the same)<br />
+                                    I thought that it could last<br />
+                                    But life is way too short<br />
+                                    <br /><br />
+                                    My past is alive<br />
+                                    I hate so much to look back<br />
+                                    And remember all the pain inside<br />
+                                    Wasting all my time<br />
+                                    Your heart's cold like<br />
+                                    The blame you like to mask<br />
+                                    I'll pretend that it's alright to want<br />
+                                    To end my life tonight<br />
+                                    <br /><br />
+                                    My past is alive<br />
+                                    I wanted it to last<br />
+                                    My life's misaligned<br />
+                                    I just wanted it to die<br />
+                                    My past is alive (I don't know you the same)<br />
+                                    I wanted it to last (I don't know you the same)<br />
+                                    My life's misaligned (I don't know you the same)<br />
+                                    I just wanted it to die<br />
+                                    <br /><br />
+                                    Take me now,<br />
+                                    End me now.<br />
+                                    Take me now,<br />
+                                    End me now.
+                                `
+                            }
+                        ]
+                    }
+                },
+                {
                     title: "Everlasting",
                     description: "",
                     path: "everlasting",
