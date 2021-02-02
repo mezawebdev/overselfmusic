@@ -13,7 +13,6 @@ module.exports = {
       { src: 'https://www.googletagmanager.com/gtag/js?id=UA-145085741-1', async: true },
       { src: 'https://kit.fontawesome.com/a0f231f0e6.js' },
       { src: "https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js", type: "text/javascript" },
-      { src: "/vendor/lightgallery/lightgallery.min.js", type: "text/javascript" }
     ],
     meta: [
       { charset: 'utf-8' },
@@ -45,9 +44,8 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/png', href: '/favicon.png' },
-      { rel: 'stylesheet', href: 'https://use.typekit.net/lol2dkn.css' },
+      // { rel: 'stylesheet', href: 'https://use.typekit.net/lol2dkn.css' },
       { rel: 'preconnect', href: 'https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;700&display=swap', rel: 'stylesheet' },
-      { href: "/vendor/lightgallery/lightgallery.min.css", rel: "stylesheet" }
     ]
   },
   server: {
