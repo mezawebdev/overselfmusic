@@ -14,6 +14,8 @@ exports.getItems = async (req, res) => {
 exports.sendEmail = (req, res, next) => {
     sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
+    console.log({key: process.env.SENDGRID_API_KEY });
+
     if (req.query.name && req.query.email && req.query.message) {
         const msg = {
             to      : "band@overselfmusic.com",
