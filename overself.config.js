@@ -48,15 +48,15 @@ export default {
         home: {
             // Setting featuredVideoId to "no-video" will hide the youtube component.
             // doing so, the page will expect a featuredImageSrc prop with the image src.
-            featuredVideoId: "Lm3VJVaJKOk",
+            featuredVideoId: "XYo-RdzWckE",
             // featuredImageSrc: "/assets/images/everlasting-artwork.jpg",
             cta: {
                 copy: `
-                    <span class="heading">Everlasting</span>
+                    <span class="heading">Alive</span>
                     <br />
                     <span class="subheader">out now</span>
                 `,
-                linkTo: "/music/everlasting"
+                linkTo: "/music/alive"
             }
         },
         about: {

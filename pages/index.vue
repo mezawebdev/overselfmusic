@@ -50,7 +50,7 @@
             </div>
             <div class="spotify">
                 <iframe 
-                    src="https://open.spotify.com/embed/track/55o3ONWJ1IJTFvlr3tfWmc" 
+                    src="https://open.spotify.com/embed/album/3Wi6jCFKpciz9AscUE0Hix" 
                     width="100%" 
                     height="80" 
                     frameborder="0" 
