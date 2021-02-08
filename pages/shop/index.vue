@@ -1,6 +1,11 @@
 <template>
     <div id="shop-page">
         <div class="container">
+            <ShopMenu>
+                <MenuButton to="/shop/cart">
+                    <i class="fas fa-shopping-cart"></i>&nbsp;Cart
+                </MenuButton>
+            </ShopMenu>
             <h1>SHOP</h1>
             <Spinner v-if="!itemsReady" />
             <RecentlyAddedItem 
@@ -13,9 +18,9 @@
                     :cols="{ default: 3, 500: 1, 792: 2 }"
                     :gutter="10"
                     ref="masonry">
-                    <div 
+                    <nuxt-link 
                         v-for="(item, i) in items" 
-                        @click="goToItem(item)"
+                        :to="'/shop/item/' + item.id"
                         :key="i"
                         ref="item"
                         :class="{ selected: itemSelected }"
@@ -29,7 +34,7 @@
                                 <span class="item-price">${{ item.price.unit_amount }}</span>
                             </div>
                         </div>
-                    </div>
+                    </nuxt-link>
                 </masonry>
             </div>
         </div>
@@ -41,11 +46,17 @@
     import Spinner from "~/components/UI/Spinner.vue";
     import { mapActions, mapGetters } from "vuex";
     import RecentlyAddedItem from "~/components/Shop/RecentlyAddedItem.vue";
+    import CookieNotice from "~/components/Shop/CookieNotice.vue";
+    import ShopMenu from "~/components/Shop/ShopMenu.vue";
+    import MenuButton from "~/components/Shop/MenuButton.vue";
 
     export default {
         components: {
             Spinner,
-            RecentlyAddedItem
+            RecentlyAddedItem,
+            CookieNotice,
+            ShopMenu,
+            MenuButton
         },
         data() {
             return {

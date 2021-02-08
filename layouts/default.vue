@@ -1,5 +1,7 @@
 <template>
     <div id="default-template">
+        <LoadingOverlay v-if="loadingOverlay" />
+        <Spotlight v-if="spotlight" />
         <Background />
         <Navigation />
         <div class="page">
@@ -9,6 +11,9 @@
                 <nuxt />
             </transition>
         </div>
+        <CookieNotice 
+            @closeCookieNotice="closeCookieNotice"
+            v-if="showCookieNotice" />
     </div>
 </template>
 
@@ -16,22 +21,62 @@
     import Navigation from "~/components/Navigation.vue";
     import Background from "~/components/Background.vue";
     import { mapGetters, mapActions, mapMutations } from "vuex";
+    import LoadingOverlay from "~/components/LoadingOverlay.vue";
+    import CookieNotice from "~/components/Shop/CookieNotice.vue";
+    import Spotlight from "~/components/Spotlight.vue";
 
     export default {
         components: {
             Navigation,
-            Background
+            Background,
+            LoadingOverlay,
+            CookieNotice,
+            Spotlight
+        },
+        computed: {
+            ...mapGetters({
+                loadingOverlay: "loadingOverlay",
+                spotlight: "spotlight"
+            })
         },
         watch: {
             $route(to, from, next) {
                 this.onRouteChange(to);
+
+                if (this.getCookie("accepted-cookies").length === 0 && this.$route.path.includes("/shop")) {
+                    this.showCookieNotice = true;
+                }
+            }
+        },
+        data() {
+            return {
+                showCookieNotice: false
             }
         },
         beforeMount() {
             this.setBackground("default");
             this.onRouteChange({ to: { name: "default" } });
         },
+        mounted() {
+            this.checkCookies();
+            
+            if (this.getCookie("accepted-cookies").length === 0 && this.$route.path.includes("/shop")) {
+                this.showCookieNotice = true;
+            }
+        },
         methods: {
+            getCookie(cookiename) {
+                var cookiestring=RegExp(cookiename+"=[^;]+").exec(document.cookie);
+                return decodeURIComponent(!!cookiestring ? cookiestring.toString().replace(/^[^=]+./,"") : "");
+            },
+            checkCookies() {
+                if (document.cookie.split("cart=")[1]) {
+                    this.overrideCart(JSON.parse(this.getCookie("cart")));
+                }
+            },
+            closeCookieNotice() {
+                this.showCookieNotice = false;
+            },
             onRouteChange(to) {
                 // switch (to.name) {
                 //     case "music-release":
@@ -49,10 +94,11 @@
                 //     break;
                 // }
             },
-            ...mapActions([
-                "setBackground",
-                "setLayout"
-            ])
+            ...mapActions({
+                setBackground: "setBackground",
+                setLayout: "setLayout",
+                overrideCart: "shop/overrideCart"
+            })
         }
     }
 </script>

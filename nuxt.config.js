@@ -13,6 +13,8 @@ module.exports = {
       { src: 'https://www.googletagmanager.com/gtag/js?id=UA-145085741-1', async: true },
       { src: 'https://kit.fontawesome.com/a0f231f0e6.js' },
       { src: "https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js", type: "text/javascript" },
+      { src: "https://js.stripe.com/v3/", type: "text/javascript" },
+      // { src: "https://rawcdn.githack.com/nextapps-de/spotlight/0.6.3/dist/js/spotlight.min.js", type: "text/javascript" }
     ],
     meta: [
       { charset: 'utf-8' },
@@ -62,7 +64,8 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    '~/assets/scss/_reset.scss'
+    '~/assets/scss/_reset.scss',
+    '~/assets/scss/_global.scss'
   ],
   /*
   ** Plugins to load before mounting the App
@@ -111,8 +114,15 @@ module.exports = {
   */
   modules: [
     '@nuxtjs/style-resources',
-    '@nuxtjs/device'
+    '@nuxtjs/device',
+    '@nuxtjs/toast'
   ],
+  /*
+  ** Toast
+  */
+  toast: {
+    position: "bottom-center"
+  },
   /*
   ** Nuxt.js style resources
   */

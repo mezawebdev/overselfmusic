@@ -2,6 +2,20 @@ const Stripe = require("stripe")(process.env.SHOP_MODE === "test" ? process.env.
     fs = require("fs"),
     { path } = require("app-root-path");
 
+exports.startCheckoutSession = async line_items => {
+    return await Stripe.checkout.sessions.create({
+        payment_method_types: ["card"],
+        line_items,
+        mode: "payment",
+        shipping_address_collection: {
+            allowed_countries: ['US', 'CA'],
+        },
+        billing_address_collection: 'required',
+        success_url: process.env.BASE_URL + "/shop/success",
+        cancel_url: process.env.BASE_URL + "/shop/cart",
+    });
+}
+
 exports.getStripeAPIKey = () => {
     if (process.env.SHOP_MODE === "test") {
         return process.env.STRIPE_SECRET_API_KEY_TEST;

@@ -1,17 +1,19 @@
 <template>
     <div id="item-page">
         <div class="container">
+            <ShopMenu>
+                <MenuButton to="/shop">
+                    <i class="fas fa-arrow-alt-circle-left"></i>&nbsp;Back to shop
+                </MenuButton>
+                <MenuButton to="/shop/cart">
+                    <i class="fas fa-shopping-cart"></i>&nbsp;Cart
+                </MenuButton>
+            </ShopMenu>
             <Title>ITEM</Title>
-            <BackToItems />
             <Spinner v-if="!itemLoaded" />
             <div
                 v-if="itemLoaded" 
                 class="item-wrap">
-                <!-- <div id="gallery">
-                    <a v-for="(src, i) in item.images" :key="i">
-                        <img :src="src" />
-                    </a>
-                </div> -->
                 <div class="block">
                     <client-only>
                         <carousel
@@ -22,7 +24,14 @@
                             <slide
                                 v-for="(image, i) in item.images"
                                 :key="'product' + i">
-                                <img :src="'/assets/images/products/' + image" />
+                                <a 
+                                    @click.prevent="showSpotlight({
+                                        items: item.images.map(image_ => { return { title: '', url: '/assets/images/products/' + image_ } }),
+                                        startingIndex: i
+                                    })" 
+                                    href="#">
+                                    <img :src="'/assets/images/products/' + image" />
+                                </a>
                             </slide>
                         </carousel>
                     </client-only>
@@ -60,7 +69,7 @@
                     </div>
                     <div 
                         v-if="item.metadata.sizes[0] === 'One size fits all'"
-                        class="size">
+                        class="size one-size-fits-all">
                         <label>One size fits all</label>
                     </div>
                     <div 
@@ -85,13 +94,17 @@
     import { mapGetters, mapActions } from "vuex";
     import Title from "~/components/Layout/Title.vue";
     import BackToItems from "~/components/Shop/BackToItems.vue";
+    import ShopMenu from "~/components/Shop/ShopMenu.vue";
+    import MenuButton from "~/components/Shop/MenuButton.vue";
 
     export default {
         name: "cart-item",
         components: {
             Spinner,
             Title,
-            BackToItems
+            BackToItems,
+            ShopMenu,
+            MenuButton
         },
         computed: {
             selectedSize() {
@@ -126,8 +139,6 @@
                 if (this.item.metadata.sizes[0] === "One size fits all") {
                     this.size = "One size fits all";
                 }
-                // console.log(lightGallery);
-                // lightGallery(document.getElementById('gallery'));
             },
             addToCart() {
                 if (this.selectedSize) {
@@ -137,6 +148,7 @@
                         productId: this.item.id,
                         size: this.size,
                         price: this.item.price.unit_amount,
+                        color: this.item.metadata.color,
                         quantity: 1 
                     });
 
@@ -147,7 +159,8 @@
             },
             ...mapActions({
                 addItemToCart: "shop/addItemToCart",
-                setLayout: "setLayout"
+                setLayout: "setLayout",
+                showSpotlight: "showSpotlight"
             })
         }
     }
@@ -193,10 +206,13 @@
                     margin-left   : -15px;
 
                     img {
-                        max-width : 200px;
-                        display   : block;
-                        margin    : 0 auto;
-                        padding   : 15px;
+                        max-width   : 300px;
+                        display     : block;
+                        margin      : 0 auto;
+                        padding-top : 10px;
+                         position    : relative;
+                        top         : 50%;
+                        transform   : translate(0, -50%);
                     }   
                     
                     .VueCarousel {
@@ -207,7 +223,7 @@
                         }
 
                         .VueCarousel-navigation {
-                            width     : 78%;
+                            width     : 70%;
                             position  : absolute;
                             left      : 50%;
                             top       : 45%;
@@ -215,6 +231,17 @@
 
                             button:focus {
                                 outline : none;
+                            }
+
+                            .VueCarousel-navigation-button {
+                                background    : rgba(0, 0, 0, 0.8);
+                                color         : white;
+                                box-shadow : 0px 4px 6px rgba(0, 0, 0, 0.4);
+                                padding       : 0px;
+                                width         : 40px;
+                                height        : 40px;
+                                border-radius : 20px;
+                                border        : 1px solid white;
                             }
                         }
 
@@ -263,6 +290,11 @@
 
                     .size {
                         text-align            : left;
+
+                        &.one-size-fits-all {
+                            text-align  : center;
+                            font-weight : 400;
+                        }
 
                         .grid {
                             display               : grid;

@@ -39,14 +39,15 @@
                     exact>
                     home
                 </nuxt-link>
-                <!-- <span v-if="layout !== 'promo'">&middot;</span>
+                <span v-if="layout !== 'promo'">&middot;</span>
                 <router-link 
                     v-if="layout !== 'promo'"
                     active-class="active" 
+                    :class="{ active: isShop }"
                     to="/shop" 
                     exact>
                     shop
-                </router-link> -->
+                </router-link>
                 <span v-if="layout !== 'promo'">&middot;</span>
                 <router-link 
                     v-if="layout !== 'promo'"
@@ -128,7 +129,7 @@
                 class="cart-btn">
                 <span class="inner">
                     <i class="fas fa-shopping-cart"></i>
-                    <span class="amount">{{ cart.items.length }}</span>
+                    <span class="amount">{{ itemsAmount }}</span>
                 </span>
             </button>
         </div>
@@ -140,10 +141,16 @@
 
     export default {
         name: "example",
-        computed: mapGetters({
-            layout: "layout",
-            cart: "shop/cart"
-        }),
+        computed: { 
+            isShop() {
+                return this.$route.path.includes("/shop");
+            },
+            ...mapGetters({
+                layout: "layout",
+                cart: "shop/cart",
+                itemsAmount: "shop/itemsAmount"
+            })
+        },
         data() {
             return {
                 prevRoute: null

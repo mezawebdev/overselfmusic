@@ -7,6 +7,7 @@
                 </div>
                 <div class="block">
                     <h3 class="item-name">{{ item.name }}</h3>
+                    <p>Price: <strong>${{ item.price.unit_amount * item.quantity }}</strong>&nbsp;(${{ item.price.unit_amount }} each)</p>
                     <p>Color: <strong>{{ item.metadata.color }}</strong></p>
                     <p>Size: <strong>{{ item.size }}</strong></p>
                     <p class="quantity">
@@ -16,6 +17,11 @@
                             @change="$emit('onQuantityChange', item)"
                             v-model="item.quantity" />
                     </p>
+                    <button 
+                        @click="removeItem(item)"
+                        class="remove">
+                        <i class="fas fa-times"></i>&nbsp;Remove
+                    </button>
                 </div>
             </div>
         </Panel>
@@ -35,6 +41,11 @@
             ...mapGetters({
                 cart: "shop/cart"
             })
+        },
+        methods: {
+            ...mapActions({
+                removeItem: "shop/removeItem"
+            })
         }
     }
 </script>
@@ -42,6 +53,10 @@
 <style scoped lang="scss">
     .cart-item {
         margin-bottom : 15px;
+
+        &:last-child {
+            margin-bottom : 0px;
+        }
 
         .grid {
             display               : grid;
@@ -83,6 +98,16 @@
                             text-align : center;
                             box-sizing : border-box;
                         }
+                    }
+
+                    .remove {
+                        margin-top    : 5px;
+                        padding       : 5px;
+                        background    : $black;
+                        color         : $white;
+                        border-radius : 5px;
+                        border        : none;
+                        box-shadow    : 0px 2px 6px rgba(0, 0, 0, 0.5);
                     }
                 }
             }

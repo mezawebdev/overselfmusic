@@ -1,6 +1,34 @@
 const utils = require("./utils");
 const sgMail = require('@sendgrid/mail');
 
+exports.startCheckoutSession = async (req, res) => {
+    if (Array.isArray(req.body)) {
+        const items = await utils.getItemsByIds(req.body.map(item => { return item.productId })),
+            line_items = [];
+
+        for (let i = 0; i < req.body.length; i++) {
+            const itemInfo = items.find(item => { return item.id = req.body[i].productId });
+
+            line_items.push({
+                price: itemInfo.price.id,
+                quantity: req.body[i].quantity,
+                description: `${ itemInfo.name }, Size: ${ req.body[i].size }, Color: ${ req.body[i].color }`
+            });
+        }
+
+        const session = await utils.startCheckoutSession(line_items);
+
+        return res.status(200).json({ id: session.id }).end();
+    } else {
+        return res.status(400).end();
+    }
+}
+
+exports.saveCart = (req, res) => {
+    res.cookie('cookieName', randomNumber, { maxAge: 900000, httpOnly: true });
+    return res.status(200).end();
+}
+
 exports.getItems = async (req, res) => {
     try {
         const items = await utils.getItemsByIds(req.body.items);
@@ -50,16 +78,16 @@ exports.sendEmail = (req, res, next) => {
 
 exports.getItemsWithSize = async (req, res) => {
     try {
-        const items = await utils.getItemsByIds(req.body.items.map(item => { return item.id }));
-        
+        const items = await utils.getItemsByIds(req.body.items.map(item => { return item.id })),    
+            itemsFormatted = [];
+
         if (items) {
-            items.forEach(item => {
-                const item__ = req.body.items.find(item_ => { return item_.id === item.id });
-                item.size = item__.size;
-            });
+            for (let i = 0; i < items.length; i++) {
+                itemsFormatted.push({ ...items[i], size: req.body.items[i].size });
+            }
         }
 
-        return res.status(200).send(items).end();
+        return res.status(200).send(itemsFormatted).end();
     } catch (err) {
         console.log(err);
         return res.status(404).end();

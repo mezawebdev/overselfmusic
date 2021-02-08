@@ -4,8 +4,7 @@
         "name": "Overself Tee",
         "images": [
             "overself-tee-1.png",
-            "overself-tee-1.png",
-            "overself-tee-1.png"
+            "overself-tee-2.jpg"
         ]
     },
     {
@@ -13,8 +12,8 @@
         "name": "Yogi Hoodie",
         "images": [
             "yogi-hoodie-1.png",
-            "yogi-hoodie-2.png",
-            "yogi-hoodie-2.png"
+            "yogi-hoodie-2.jpg",
+            "yogi-hoodie-3.png"
         ]
     },
     {
@@ -22,16 +21,13 @@
         "name": "Astronaut Tee",
         "images": [
             "astronaut-tee-1.png",
-            "astronaut-tee-1.png",
-            "astronaut-tee-1.png"
+            "astronaut-tee-2.jpg"
         ]
     },
     {
         "id": "prod_Igqn3tvC5lDfPv",
         "name": "Overself 5-Panel Cap",
         "images": [
-            "overself-5-panel-cap-1.png",
-            "overself-5-panel-cap-1.png",
             "overself-5-panel-cap-1.png"
         ]
     }
