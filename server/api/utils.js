@@ -65,7 +65,7 @@ exports.getAllItems = async () => {
     items.data.forEach(item => {
         if (item.active) {
             var localData = localProductDataJSON.find(product => { return product.id === item.id });
-            console.log(localdata);
+            console.log(localData);
             item.price = prices.data.find(price => { return price.id === localData.priceId });
             // console.log(item.name, {price: item.price});
             item.price.unit_amount = item.price.unit_amount / 100;
