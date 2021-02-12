@@ -39,7 +39,7 @@
                     exact>
                     home
                 </nuxt-link>
-                <!-- <span v-if="layout !== 'promo'">&middot;</span>
+                <span v-if="layout !== 'promo'">&middot;</span>
                 <router-link 
                     v-if="layout !== 'promo'"
                     active-class="active" 
@@ -47,7 +47,7 @@
                     to="/shop" 
                     exact>
                     shop
-                </router-link> -->
+                </router-link>
                 <span v-if="layout !== 'promo'">&middot;</span>
                 <router-link 
                     v-if="layout !== 'promo'"
