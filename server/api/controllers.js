@@ -39,8 +39,15 @@ exports.stripeWebhook = async (req, res) => {
 
     let event;
 
+    // console.log({
+    //     shopmode: process.env.SHOP_MODE,
+    //     livesecret: [rocess.env.STRIPE_API_WEBHOOK_SECRET_LIVE,
+    // });
+
     try {
+        console.log("try..");
         event = Stripe.webhooks.constructEvent(payload, sig, process.env.SHOP_MODE === "live" ? process.env.STRIPE_API_WEBHOOK_SECRET_LIVE : process.env.STRIPE_API_WEBHOOK_SECRET_TEST);
+        console.log("worked!")
     } catch (err) {
         console.log({err});
         return res.status(400).send(`Webhook Error: ${ err.message }`);

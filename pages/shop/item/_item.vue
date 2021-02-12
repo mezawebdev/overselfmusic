@@ -246,6 +246,11 @@
                     .VueCarousel {
                         box-sizing : border-box;
 
+                        a {
+                            display : block;
+                            height  : 100%;
+                        }
+
                         .VueCarousel-dot-container {
                             margin-top : 0px !important;
                         }
