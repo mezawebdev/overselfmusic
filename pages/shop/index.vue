@@ -7,14 +7,12 @@
                 </MenuButton>
             </ShopMenu>
             <h1>SHOP</h1>
-            <client-only>
-                <Spinner v-if="!itemsReady" />
-                <RecentlyAddedItem 
-                    :itemId="addedItemId"
-                    v-if="showRecentlyAddedItem" />
-            </client-only>
+            <Spinner v-if="!itemsReady" />
+            <RecentlyAddedItem 
+                :itemId="addedItemId"
+                v-if="showRecentlyAddedItem" />
             <div
-                v-show="itemsReady" 
+                v-if="itemsReady" 
                 class="items">
                 <masonry 
                     :cols="{ default: 3, 500: 1, 792: 2 }"
