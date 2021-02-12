@@ -75,6 +75,7 @@
                 this.$router.replace({'query': null});
                 this.fetchOrder();
             } else {
+                this.$toast.error("There was an error. Please try again.", { duration: 5000 });
                 this.$router.push("/shop");
             }
         },
