@@ -10,7 +10,7 @@
                 </MenuButton>
             </ShopMenu>
             <Title>ITEM</Title>
-            <Spinner v-if="!itemLoaded" />
+            <Spinner v-show="!itemLoaded" />
             <div
                 v-if="itemLoaded" 
                 class="item-wrap">
@@ -21,18 +21,20 @@
                             :navigationPrevLabel="carouselPrevHtml"
                             :perPage="1"
                             :navigationEnabled="true">
-                            <slide
-                                v-for="(image, i) in item.images"
-                                :key="'product' + i">
-                                <a 
-                                    @click.prevent="showSpotlight({
-                                        items: item.images.map(image_ => { return { title: '', url: '/assets/images/products/' + image_ } }),
-                                        startingIndex: i
-                                    })" 
-                                    href="#">
-                                    <img :src="'/assets/images/products/' + image" />
-                                </a>
-                            </slide>
+                            <client-only>
+                                <slide
+                                    v-for="(image, i) in item.images"
+                                    :key="'product' + i">
+                                    <a 
+                                        @click.prevent="showSpotlight({
+                                            items: item.images.map(image_ => { return { title: '', url: '/assets/images/products/' + image_ } }),
+                                            startingIndex: i
+                                        })" 
+                                        href="#">
+                                        <img :src="'/assets/images/products/' + image" />
+                                    </a>
+                                </slide>
+                            </client-only>
                         </carousel>
                     </client-only>
                 </div>
@@ -147,21 +149,22 @@
                 error: false
             }
         },
-        created() {
-            this.setLayout("shop");
-        },
         mounted() {
+            this.setLayout("shop");
             this.fetch();
         },
         methods: {
             async fetch() {
                 const req = await axios.get("/api/shop/get-item?id=" + this.$route.params.item);
                 this.item = req.data[0];
-                this.itemLoaded = true;
-                
+
                 if (this.item.metadata.sizes[0] === "One size fits all") {
                     this.size = "One size fits all";
                 }
+
+                this.$nextTick(() => {
+                    this.itemLoaded = true;
+                });
             },
             addToCart() {
                 if (this.selectedSize) {
