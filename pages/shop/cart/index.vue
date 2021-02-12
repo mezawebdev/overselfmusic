@@ -10,32 +10,33 @@
             <div
                 v-if="cart.items.length > 0" 
                 class="with-items">
-                <CartSummary />
+                <div class="grid-block">
+                    <CartSummary ref="cartSummary" />
+                </div>
                 <hr />
-                <div class="item-list">
-                    <h4><strong>{{ itemsAmount }} {{ itemsAmount > 1 ? "items" : "item" }}</strong> in your cart</h4>
-                    <div class="list">
-                        <Spinner v-if="!itemsLoaded" />
-                        <div v-if="itemsLoaded">
-                            <CartItem
-                                v-for="(item, i) in items"
-                                :key="i"
-                                :item="item"
-                                @onQuantityChange="onQuantityChange" />
+                <div class="grid-block">
+                    <div class="item-list">
+                        <h4><strong>{{ itemsAmount }} {{ itemsAmount > 1 ? "items" : "item" }}</strong> in your cart</h4>
+                        <div class="list">
+                            <Spinner v-if="!itemsLoaded" />
+                            <div v-if="itemsLoaded">
+                                <CartItem
+                                    v-for="(item, i) in items"
+                                    :key="i"
+                                    :item="item"
+                                    @onQuantityChange="onQuantityChange"
+                                    @refresh="refresh" />
+                            </div>
                         </div>
                     </div>
                 </div>
-                <hr v-if="cart.items.length > 4" />
-                <CartSummary v-if="cart.items.length > 4" />
+                <!-- <hr v-if="cart.items.length > 4 && window.innerWidth > 767" /> -->
+                <!-- <CartSummary v-if="cart.items.length > 4 && window.innerWidth < 767" /> -->
             </div>
             <div 
                 v-if="cart.items.length === 0"
                 class="no-items">
                 <span><i class="fas fa-shopping-cart"></i>&nbsp;&nbsp;Your cart is empty</span>
-                <!-- <br />
-                <nuxt-link to="/shop">
-                    <i class="fas fa-arrow-alt-circle-left"></i>&nbsp;Continue shopping
-                </nuxt-link> -->
             </div>
         </div>
     </div>
@@ -54,6 +55,11 @@
     import MenuButton from "~/components/Shop/MenuButton.vue";
 
     export default {
+        head() {
+            return {
+                title: `${ this.OVERSELF.global.siteTitle } | Cart`
+            }
+        },
         components: {
             Spinner,
             ShopLink,
@@ -85,12 +91,12 @@
         },
         methods: {
             async fetch() {
+                this.itemsLoaded = false;
+
                 try {
                     const req = await axios.post("/api/shop/get-items-with-size", {
                         items: this.cart.items.map(item => { return { id: item.productId, size: item.size }})
                     });
-
-                    console.log(req.data);
                     
                     if (req.data.length > 0) {
                         this.cart.items.forEach(item => {
@@ -107,9 +113,14 @@
                     console.log(err);
                 }
             },
+            async refresh() {
+                await this.fetch();
+                if (this.$refs.cartSummary) this.$refs.cartSummary.getExtraCostsEstimated();
+            },
             onQuantityChange(item) {
                 if (parseInt(item.quantity) === 0) item.quantity = 1;
                 this.updateItem(item);
+                if (this.$refs.cartSummary) this.$refs.cartSummary.getExtraCostsEstimated();
             },
             ...mapActions({
                 setLayout: "setLayout",
@@ -130,7 +141,17 @@
                 .list {
                     margin-top : 15px;
 
-                    
+                    > div {
+                        @media (min-width : $breakpoint-md) {
+                            display               : grid;
+                            grid-template-columns : minmax(0, 1fr) minmax(0, 1fr);
+                            grid-gap              : 15px;
+                        }
+
+                        @media (min-width : $breakpoint-lg) {
+                            grid-template-columns : minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+                        }
+                    }
                 }
             }
         }

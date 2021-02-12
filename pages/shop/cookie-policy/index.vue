@@ -85,7 +85,14 @@
     import BackToItems from "~/components/Shop/BackToItems.vue";
     import ShopMenu from "~/components/Shop/ShopMenu.vue";
     import MenuButton from "~/components/Shop/MenuButton.vue";
-    export default { components: { BackToItems, ShopMenu, MenuButton } }
+    export default { 
+        head() {
+            return {
+                title: `${ this.OVERSELF.global.siteTitle } | Cookie Policy`
+            }
+        },
+        components: { BackToItems, ShopMenu, MenuButton } 
+    }
 </script>
 
 <style scoped>

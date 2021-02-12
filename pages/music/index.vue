@@ -39,7 +39,7 @@
     export default {
         head() {
             return {
-                title : "OVERSELF | Music"
+                title : "o v e r s e l f | Music"
             }
         },
         name      : "music-page",

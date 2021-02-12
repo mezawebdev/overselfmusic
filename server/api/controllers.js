@@ -1,20 +1,89 @@
-const utils = require("./utils");
-const sgMail = require('@sendgrid/mail');
+const Stripe = require("stripe")(process.env.SHOP_MODE === "test" ? process.env.STRIPE_SECRET_API_KEY_TEST : process.env.STRIPE_SECRET_API_KEY_LIVE),
+    utils = require("./utils"),
+    sgMail = require('@sendgrid/mail'),
+    axios = require("axios"),
+    { path } = require("app-root-path"),
+    Order = require("../database/entities/Order"),
+    PrintfulAPI = require("../database/apis/PrintfulAPI");
+
+exports.fetchOrderTotal = async (req, res) => {
+    if (typeof req.query.on !== "string") return res.status(401).end();
+
+    const order = new Order(req.query.on);
+
+    try {
+        await order.fetch();
+        const total = (order.data.stripeCheckoutSessionData.amount_subtotal / 100).toFixed(2);
+        return res.status(200).send(total).end();
+    } catch (err) {
+        console.log(err);
+        console.log("error!");
+        return res.status(404).end();
+    }
+}
+
+exports.getEstimatedCosts = async (req, res) => {
+    if (typeof req.body === undefined) return res.status(403).end();
+
+    try {
+        return res.status(200).send(await PrintfulAPI.getEstimatedCosts(req.body)).end();
+    } catch (err) {
+        console.log(err);
+        return res.status(500).send(err);
+    }
+}
+
+exports.stripeWebhook = async (req, res) => {
+    const payload = req.body,
+        sig = req.headers['stripe-signature'];
+
+    let event;
+
+    try {
+        event = Stripe.webhooks.constructEvent(payload, sig, "whsec_DbVRbojG468f1G65qOrmfNQvWq9R0jF5");
+    } catch (err) {
+        console.log({err});
+        return res.status(400).send(`Webhook Error: ${ err.message }`);
+    }
+
+    if (event.type === 'checkout.session.completed') {
+        const order = new Order(event.data.object.client_reference_id, true);
+        order.data.stripeCheckoutSessionData = event.data.object;
+        await order.save();
+        await order.fulfill();
+    }
+
+    return res.status(200).end();
+}
 
 exports.startCheckoutSession = async (req, res) => {
-    if (Array.isArray(req.body)) {
-        const items = await utils.getItemsByIds(req.body.map(item => { return item.productId })),
+    if (Array.isArray(req.body.items)) {
+        const items = await utils.getItemsByIds(req.body.items.map(item => { return item.productId })),
             line_items = [];
 
-        for (let i = 0; i < req.body.length; i++) {
-            const itemInfo = items.find(item => { return item.id = req.body[i].productId });
+        // console.log(req.body.items);
+        // console.log("----");
+        // console.log(items);
 
+        for (let i = 0; i < req.body.items.length; i++) {
+            const itemInfo = items.find(item => { return item.name === req.body.items[i].name });
             line_items.push({
                 price: itemInfo.price.id,
-                quantity: req.body[i].quantity,
-                description: `${ itemInfo.name }, Size: ${ req.body[i].size }, Color: ${ req.body[i].color }`
+                quantity: req.body.items[i].quantity,
+                description: `${ itemInfo.name }, Size: ${ req.body.items[i].size }, Color: ${ req.body.items[i].color }`
             });
         }
+
+        line_items.push({
+            price_data: {
+                currency: "usd",
+                product_data: {
+                    name: "Shipping"
+                },
+                unit_amount: req.body.shipping_cost * 100
+            }, 
+            quantity: 1
+        });
 
         const session = await utils.startCheckoutSession(line_items);
 
@@ -41,8 +110,6 @@ exports.getItems = async (req, res) => {
 
 exports.sendEmail = (req, res, next) => {
     sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-
-    console.log({key: process.env.SENDGRID_API_KEY });
 
     if (req.query.name && req.query.email && req.query.message) {
         const msg = {

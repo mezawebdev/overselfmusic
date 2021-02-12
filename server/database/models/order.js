@@ -1,10 +1,10 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Order = sequelize.define('Order', {
-    stripeProductId: DataTypes.STRING,
-    stripeProductName: DataTypes.STRING,
-    stripePaymentId: DataTypes.STRING,
-    printfulOrderId: DataTypes.STRING
+    orderNumber: DataTypes.STRING,
+    stripeCheckoutSessionData: DataTypes.JSON,
+    printfulOrderData: DataTypes.JSON,
+    products: DataTypes.JSON
   }, {});
   Order.associate = function(models) {
     // associations can be defined here

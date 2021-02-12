@@ -94,7 +94,8 @@
             </div>
             <div
                 class="social-links"
-                v-if="layout === 'main' || layout === 'shop'">
+                v-if="layout === 'main' || layout === 'shop'"
+                :class="{ shop: layout === 'shop' }">
                 <div 
                     class="grid"
                     :class="[

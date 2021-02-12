@@ -43,8 +43,13 @@
             $route(to, from, next) {
                 this.onRouteChange(to);
 
-                if (this.getCookie("accepted-cookies").length === 0 && this.$route.path.includes("/shop")) {
+                window.scrollTo(0, 0);
+
+
+                if (!this.$getCookie("accepted-cookies") && this.$route.path.includes("/shop")) {
                     this.showCookieNotice = true;
+                } else {
+                    this.showCookieNotice = false;
                 }
             }
         },
@@ -60,7 +65,7 @@
         mounted() {
             this.checkCookies();
             
-            if (this.getCookie("accepted-cookies").length === 0 && this.$route.path.includes("/shop")) {
+            if (!this.$getCookie("accepted-cookies") && this.$route.path.includes("/shop")) {
                 this.showCookieNotice = true;
             }
         },
@@ -70,8 +75,8 @@
                 return decodeURIComponent(!!cookiestring ? cookiestring.toString().replace(/^[^=]+./,"") : "");
             },
             checkCookies() {
-                if (document.cookie.split("cart=")[1]) {
-                    this.overrideCart(JSON.parse(this.getCookie("cart")));
+                if (this.$getCookie("cart")) {
+                    this.overrideCart(JSON.parse(this.$getCookie("cart")));
                 }
             },
             closeCookieNotice() {

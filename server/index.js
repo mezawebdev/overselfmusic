@@ -1,7 +1,21 @@
+require("dotenv").config();
 const express = require('express')
 const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
 const app = express();
+const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
+const controllers = require("./api/controllers");
+
+app.use((req, res, next) => {
+  if (req.originalUrl === "/api/stripe-webhook") {
+    next();
+  } else {
+    bodyParser.json()(req, res, next);
+  }
+});
+
+app.use(cookieParser());
 
 // Import and Set Nuxt.js options
 const config = require('../nuxt.config.js')

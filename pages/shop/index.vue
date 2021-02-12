@@ -37,6 +37,9 @@
                     </nuxt-link>
                 </masonry>
             </div>
+            <div class="shipping-notice">
+                Shipping To U.S. Only
+            </div>
         </div>
     </div>
 </template>
@@ -51,6 +54,11 @@
     import MenuButton from "~/components/Shop/MenuButton.vue";
 
     export default {
+        head() {
+            return {
+                title: `${ this.OVERSELF.global.siteTitle } | Shop`
+            }
+        },
         components: {
             Spinner,
             RecentlyAddedItem,
@@ -118,8 +126,8 @@
     #shop-page {
         h1 {
             margin-bottom : 15px;
-
         }
+
         .items {
             .item {
                 margin-bottom   : 10px;
@@ -188,6 +196,7 @@
                         opacity       : 0;
                         font-size     : 1.25em;
                         border-radius : 5px;
+                        text-align    : center;
                     }
 
                     hr {
@@ -195,18 +204,27 @@
 
                         @media (min-width : $breakpoint-md) {
                             display : block;
+                            width   : 40px;
                         }
-                    }
-
-                    .item-name {
-
                     }
 
                     .item-price {
                         font-weight : 200;
                     }
+
+                    .space {
+                        @media (min-width : $breakpoint-md) {
+                            display : none;
+                        }
+                    }
                 }
             }
+        }
+
+        .shipping-notice {
+            margin-top  : 15px;
+            font-style  : italic;
+            font-weight : 400;
         }
     }
 </style>

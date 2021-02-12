@@ -8,17 +8,17 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      stripeProductId: {
+      orderNumber: {
         type: Sequelize.STRING
       },
-      stripeProductName: {
-        type: Sequelize.STRING
+      stripeCheckoutSessionData: {
+        type: Sequelize.JSON
       },
-      stripePaymentId: {
-        type: Sequelize.STRING
+      printfulOrderData: {
+        type: Sequelize.JSON
       },
-      printfulOrderId: {
-        type: Sequelize.STRING
+      products: {
+        type: Sequelize.JSON
       },
       createdAt: {
         allowNull: false,

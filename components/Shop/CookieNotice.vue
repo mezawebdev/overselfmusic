@@ -39,20 +39,25 @@
         filter                  : drop-shadow(0px 0px 7px rgba(0, 0, 0, 0.4));
         opacity                 : 0;
         padding                 : 10px;
-        transform               : translateX(-45%) translateY(-10px);
+        transform               : translateX(-40%) translateY(-10px);
         -webkit-animation-delay : 4s;
         animation-delay         : s;
         animation               : fade-in-down 1.5s ease-in-out 1 forwards;
 
+        @media (min-width : $breakpoint-md) {
+            width     : 200px;
+            font-size : 1em;
+        }
+
         @keyframes fade-in-down {
             0% { 
                 opacity   : 0;
-                transform : translateX(-45%) translateY(-10px);
+                transform : translateX(-40%) translateY(-10px);
             }
 
             100% { 
                 opacity   : 1;
-                transform : translateX(-45%) translateY(0);
+                transform : translateX(-40%) translateY(0);
             }
         }
 

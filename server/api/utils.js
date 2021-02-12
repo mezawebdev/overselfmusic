@@ -2,7 +2,34 @@ const Stripe = require("stripe")(process.env.SHOP_MODE === "test" ? process.env.
     fs = require("fs"),
     { path } = require("app-root-path");
 
+exports.createOrderEntry = async session => {
+    // do things
+    console.log("FULLFILLING ORDER!");
+    console.log(session);
+    await Order.create({
+        stripeCheckoutSessionData: session
+    });
+}
+
+exports.fulfillOrder = async session => {
+
+}
+
+exports.generateId = length => {
+    let result = "",
+        characters = "123456789",
+        charactersLength = characters.length;
+
+    for (let i = 0; i < length; i++) {
+       result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+
+    return result;
+}
+
 exports.startCheckoutSession = async line_items => {
+    const orderNumber = this.generateId(9);
+    
     return await Stripe.checkout.sessions.create({
         payment_method_types: ["card"],
         line_items,
@@ -11,8 +38,9 @@ exports.startCheckoutSession = async line_items => {
             allowed_countries: ['US', 'CA'],
         },
         billing_address_collection: 'required',
-        success_url: process.env.BASE_URL + "/shop/success",
+        success_url: process.env.BASE_URL + "/shop/success?on=" + orderNumber,
         cancel_url: process.env.BASE_URL + "/shop/cart",
+        client_reference_id: orderNumber
     });
 }
 
@@ -25,20 +53,27 @@ exports.getStripeAPIKey = () => {
 }
 
 exports.getAllItems = async () => {
-    const items = await Stripe.products.list(),
+    let items = await Stripe.products.list(),
         prices = await Stripe.prices.list(),
         localProductDataJSON = JSON.parse(fs.readFileSync(`${ path }/storage/products.json`)),
         formatted = [];
 
+    items.data = items.data.filter(item => { return item.active });
+
+    prices.data = prices.data.filter(price => { return price.active });
+
     items.data.forEach(item => {
         if (item.active) {
             var localData = localProductDataJSON.find(product => { return product.id === item.id });
-            item.price = prices.data.find(price => { return price.product === item.id });
+            item.price = prices.data.find(price => { return price.id === localData.priceId });
+            // console.log(item.name, {price: item.price});
             item.price.unit_amount = item.price.unit_amount / 100;
             item.metadata.sizes = typeof item.metadata.sizes === "string" ? JSON.parse(item.metadata.sizes) : [];
+            item.metadata.shipping_cost = typeof item.metadata.shipping_cost === "string" ? JSON.parse(item.metadata.shipping_cost) : [];
             item.images = localData.images;
-            // console.log(item);
+            item.sizeChart = localData.sizeChart || "";
             formatted.push(item);
+            // console.log("\n");
         }
     });
 
@@ -48,7 +83,7 @@ exports.getAllItems = async () => {
 exports.getItemsByIds = async ids => {
     const items = await this.getAllItems(),
         stripeItems = [];
-
+    
     ids.forEach(id => {
         items.forEach(stripeItem => {
             if (stripeItem.id === id) {

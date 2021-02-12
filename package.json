@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@nuxtjs/device": "^1.2.3",
+    "@nuxtjs/sitemap": "^2.4.0",
     "@nuxtjs/style-resources": "^0.1.2",
     "@nuxtjs/toast": "^3.3.1",
     "@sendgrid/mail": "^6.4.0",

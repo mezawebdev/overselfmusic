@@ -18,7 +18,7 @@
                             v-model="item.quantity" />
                     </p>
                     <button 
-                        @click="removeItem(item)"
+                        @click="removeFromCart(item)"
                         class="remove">
                         <i class="fas fa-times"></i>&nbsp;Remove
                     </button>
@@ -43,6 +43,10 @@
             })
         },
         methods: {
+            removeFromCart(item) {
+                this.removeItem(item);
+                this.$emit("refresh", item);
+            },
             ...mapActions({
                 removeItem: "shop/removeItem"
             })
@@ -63,12 +67,26 @@
             grid-template-columns : 90px 1fr;
             grid-gap              : 15px;
 
+            @media (min-width : $breakpoint-md) {
+                height                : 175px;
+                grid-template-columns : auto 1fr;
+            }
+
             .block {
+                @media (min-width : $breakpoint-md) {
+                    height : 175px;
+                }
+
                 &:nth-child(1) {
                     img {
                         width         : 100%;
                         background    : rgba(255, 255, 255, 0.9);
                         border-radius : 5px;
+
+                        @media (min-width : $breakpoint-md) {
+                            width  : auto;
+                            height : 100%;
+                        }
                     }
                 }
 

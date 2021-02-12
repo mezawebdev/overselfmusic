@@ -1,3 +1,5 @@
+import Vue from "vue";
+
 export const state = () => ({
     cart: {
         items: []
@@ -5,6 +7,9 @@ export const state = () => ({
 });
 
 export const actions = {
+    clearCart({ commit }) {
+        commit("CLEAR_CART");
+    },
     addItemToCart({ commit }, payload) {
         commit("ADD_ITEM_TO_CART", payload);
     },
@@ -20,6 +25,10 @@ export const actions = {
 }
 
 export const mutations = {
+    CLEAR_CART(state) {
+        state.cart.items = [];
+        Vue.prototype.$eraseCookie("cart");
+    },
     ADD_ITEM_TO_CART(state, payload) {
         let isInCart = false; 
 
@@ -32,23 +41,26 @@ export const mutations = {
 
         if (!isInCart) state.cart.items.push(payload);
 
-        document.cookie = "cart=" + JSON.stringify(state.cart) + ";";
+        Vue.prototype.$eraseCookie("cart");
+        Vue.prototype.$createCookie("cart", JSON.stringify(state.cart));
     },
     UPDATE_ITEM(state, payload) {
         const item = state.cart.items.find(it => { return it.productId === payload.id });
         item.quantity = parseInt(payload.quantity);
-        document.cookie = "cart=" + JSON.stringify(state.cart) + ";";
+
+        Vue.prototype.$eraseCookie("cart");
+        Vue.prototype.$createCookie("cart", JSON.stringify(state.cart));
     },
     OVERRIDE_CART(state, payload) {
         state.cart = payload;
     },
     REMOVE_ITEM(state, payload) {
         for (let i = 0; i < state.cart.items.length; i++) {
-            // console.log(state.cart.items[i].productId, payload.id);
-            if (state.cart.items[i].productId === payload.id) state.cart.items.splice(i, 1);
+            if (state.cart.items[i].productId === payload.id && state.cart.items[i].size === payload.size) state.cart.items.splice(i, 1);
         }
-        
-        document.cookie = "cart=" + JSON.stringify(state.cart) + ";";
+
+        Vue.prototype.$eraseCookie("cart");
+        Vue.prototype.$createCookie("cart", JSON.stringify(state.cart));
     }
 }
 

@@ -37,24 +37,42 @@
                     </client-only>
                 </div>
                 <div class="block">
-                    <div class="name">
-                        <p>{{ item.name }}</p>
-                    </div>
-                    <hr />
-                    <div class="price">
-                        <p>${{ item.price.unit_amount }}.00</p>
+                    <div class="top-grid">
+                        <div class="name">
+                            <p>{{ item.name }}<span class="desktop-space">&nbsp;</span><span class="desktop-price">${{ item.price.unit_amount }}.00</span></p>
+                        </div>
+                        <hr />
+                        <div class="price">
+                            <p>${{ item.price.unit_amount }}.00</p>
+                        </div>
                     </div>
                     <div class="description">
                         <p>{{ item.description }}</p>
                     </div>
                     <div 
+                        v-if="item.sizeChart.length > 0"
+                        class="size-chart">
+                        <a 
+                            @click.prevent="seeSizeChart"
+                            href="#">
+                            <span class="bold">See Size Guide</span>
+                        </a>
+                    </div>
+                    <div class="shipping-notice">
+                        Shipping To U.S. Only
+                    </div>
+                    <div class="extra-info">
+                        <p><span class="bold">Questions?</span> Send us a message on our <nuxt-link to="/contact">Contact Page</nuxt-link>.</p>
+                    </div>
+                    <div 
                         v-if="item.metadata.sizes[0] !== 'One size fits all'"
                         class="size">
                         <div class="grid">
-                            <div>
+                            <div class="grid-block">
                                 <label>Select Size:</label>
                             </div>
-                            <div>
+                            &nbsp;&nbsp;
+                            <div class="grid-block">
                                 <client-only>
                                     <v-select
                                         v-model="size"
@@ -98,6 +116,11 @@
     import MenuButton from "~/components/Shop/MenuButton.vue";
 
     export default {
+        head() {
+            return {
+                title: `${ this.OVERSELF.global.siteTitle } | Item`
+            }
+        },
         name: "cart-item",
         components: {
             Spinner,
@@ -145,10 +168,12 @@
                     this.error = false;
 
                     this.addItemToCart({
+                        name: this.item.name,
                         productId: this.item.id,
                         size: this.size,
                         price: this.item.price.unit_amount,
                         color: this.item.metadata.color,
+                        shipping_cost: this.item.metadata.shipping_cost,
                         quantity: 1 
                     });
 
@@ -156,6 +181,13 @@
                 } else {
                     this.error = true;
                 }
+            },
+            seeSizeChart() {
+                console.log(this.showSpotlight);
+                this.showSpotlight({
+                    items: [{ title: '', url: '/assets/images/products/' + this.item.sizeChart }],
+                    startingIndex: 0
+                });
             },
             ...mapActions({
                 addItemToCart: "shop/addItemToCart",
@@ -179,40 +211,36 @@
             }
         }
 
-        #gallery {
-            width      : 100vw;
-            height     : 100vh;
-            z-index    : 100;
-            background : rgba(0, 0, 0, 0.5);
-            position   : fixed;
-            left       : 0px;
-            top        : 0px;
-            a {
-                width : 100%;
-            }
-            a img {
-                width : 80%;
-            }
-        }
-
         .item-wrap {
+            @media (min-width : $breakpoint-md) {
+                display               : grid;
+                grid-template-columns : minmax(0, 1fr) minmax(0, 1fr);
+                grid-gap              : 25px;
+            }
+
             .block {
                 &:nth-child(1) {
                     margin-bottom : 20px;
                     background    : rgba(225, 225, 225, 0.75);
                     box-shadow    : 0px 2px 10px rgba(0, 0, 0, 0.5);
-                    // border-radius : 5px;
                     width         : 100vw;
                     margin-left   : -15px;
+
+                    @media (min-width : $breakpoint-md) {
+                        width         : 100%;
+                        margin-left   : 0px;
+                        border-radius : 5px;
+                    }
 
                     img {
                         max-width   : 300px;
                         display     : block;
                         margin      : 0 auto;
                         padding-top : 10px;
-                         position    : relative;
+                        position    : relative;
                         top         : 50%;
                         transform   : translate(0, -50%);
+                        cursor      : zoom-in;
                     }   
                     
                     .VueCarousel {
@@ -260,28 +288,89 @@
                 &:nth-child(2) {
                     text-align : center;
 
+                    .top-grid {
+                        @media (min-width : $breakpoint-md) {
+                            margin-bottom : 20px;
+                        }
+                    }
+
                     .name {
                         p {
                             font-size   : 1.75em;
                             text-align  : center;
                             font-weight : 400;
+
+                            @media (min-width : $breakpoint-md) {
+                                font-size  : 2em;
+                                text-align : left;
+                            }
+                        }
+
+                        .desktop-space {
+                            display : none;
+
+                            @media (min-width : $breakpoint-md) {
+                                display : inline;
+                            }
+                        }
+
+                        .desktop-price {
+                            display : none;
+
+                            @media (min-width : $breakpoint-md) {
+                                display       : inline-block;
+                                background    : #B12704;
+                                padding       : 5px;
+                                font-weight   : 200 !important;
+                                border-radius : 5px;
+                                line-height   : 25px;
+                                font-size     : 0.75em !important;
+                                box-shadow    : 0px 2px 6px rgba(0, 0, 0, 0.5);
+                            }
                         }
                     }
 
                     hr {
                         width     : 190px;
                         max-width : 190px;
+
+                        @media (min-width : $breakpoint-md) {
+                            display : none;
+                        }
                     }
 
                     .price {
                         font-size     : 1.25em;
                         margin-bottom : 15px;
                         font-weight   : 400;
+
+                        @media (min-width : $breakpoint-md) {
+                            display         : none;
+                            justify-content : flex-end;
+                            align-items     : center;
+                            margin-bottom   : 0px;
+                            font-size       : 1.75em;
+                        }
+
+                        p {
+                            @media (min-width : $breakpoint-md) {
+                                background    : rgba(0, 0, 0, 0.5);
+                                padding       : 5px;
+                                display       : table;
+                                border-radius : 5px;
+                            }
+                        }
                     }
 
-                    .description {
+                    .description,
+                    .extra-info,
+                    .size-chart {
                         margin-bottom : 25px;
                         text-align    : left;
+
+                        @media (min-width : $breakpoint-md) {
+                            margin-bottom : 30px;
+                        }
 
                         span {
                             font-weight : bold;
@@ -289,7 +378,7 @@
                     }
 
                     .size {
-                        text-align            : left;
+                        text-align : center;
 
                         &.one-size-fits-all {
                             text-align  : center;
@@ -297,14 +386,14 @@
                         }
 
                         .grid {
-                            display               : grid;
-                            grid-template-columns : minmax(0, 0.7fr) minmax(0, 1.3fr);
+                            // display               : grid;
+                            // grid-template-columns : minmax(0, 0.7fr) minmax(0, 1.3fr);
+                            white-space : nowrap;
 
-                            div {
+                            .grid-block {
+                                display : inline-block;
+
                                 &:nth-child(1) {
-                                    display     : flex;
-                                    align-items : center;
-
                                     label {
                                         display     : block;
                                         font-weight : 400;
@@ -312,6 +401,8 @@
                                 }
 
                                 &:nth-child(2) {
+                                    width : 150px;
+
                                     .vs__dropdown-toggle {
                                         background    : white;
                                         border-radius : 5px;
@@ -353,5 +444,12 @@
                 }
             }
         }  
+
+        .shipping-notice { 
+            margin-bottom : 25px;
+            display       : block;
+            text-align    : left;
+            font-style    : italic;
+        }
     }
 </style>
