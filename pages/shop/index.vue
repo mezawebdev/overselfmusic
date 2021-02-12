@@ -7,10 +7,12 @@
                 </MenuButton>
             </ShopMenu>
             <h1>SHOP</h1>
-            <Spinner v-if="!itemsReady" />
-            <RecentlyAddedItem 
-                :itemId="addedItemId"
-                v-if="showRecentlyAddedItem" />
+            <client-only>
+                <Spinner v-if="!itemsReady" />
+                <RecentlyAddedItem 
+                    :itemId="addedItemId"
+                    v-if="showRecentlyAddedItem" />
+            </client-only>
             <div
                 v-show="itemsReady" 
                 class="items">

@@ -173,6 +173,7 @@ exports.getItem = async (req, res) => {
 exports.getAllItems = async (req, res) => {
     try {
         const items = await utils.getAllItems();
+        console.log(items);
         return res.status(200).send(items).end();
     } catch (err) {
         return res.status(404).end();
