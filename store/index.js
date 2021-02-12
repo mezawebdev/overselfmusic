@@ -19,7 +19,7 @@ export const actions = {
         // console.log(process.env.STRIPE_PUBLIC_API_KEY_TEST);
         // const { data } = await axios.get(`https://api.songkick.com/api/3.0/artists/${ process.env.SONGKICK_ARTIST_ID }/calendar.json?apikey=${ process.env.SONGKICK_API_KEY }`);
         // commit("STORE_SHOWS", data.resultsPage.results.event);
-        commit("STRIPE_PUBLIC_API_KEY_TEST", process.env.STRIPE_PUBLIC_API_KEY_TEST);
+        commit("STRIPE_PUBLIC_API_KEY", process.env.SHOP_MODE === "live" ? process.env.STRIPE_PUBLIC_API_KEY_LIVE : process.env.STRIPE_PUBLIC_API_KEY_TEST);
     },
     setBackground({ commit, state }, background) {
         let newBg = OVERSELF.global.backgrounds.find(bg => { return bg.name === background });
@@ -70,7 +70,7 @@ export const mutations = {
     SET_SPOTLIGHT_INDEX(state, i) {
         state.spotlightIndex = i;
     },
-    STRIPE_PUBLIC_API_KEY_TEST(state, key) {
+    STRIPE_PUBLIC_API_KEY(state, key) {
         state.stripePublicAPIKeyTest = key;
     },
     SET_LAYOUT(state, layout) {
@@ -98,7 +98,7 @@ export const getters = {
     shows(state) { return state.shows },
     background(state) { return state.background },
     backgroundLoading(state) { return state.backgroundLoading },
-    stripePublicAPIKeyTest(state) { return state.stripePublicAPIKeyTest },
+    stripePublicAPIKey(state) { return state.stripePublicAPIKeyTest },
     loadingOverlay(state) { return state.loadingOverlay },
     spotlight(state) { return state.spotlight },
     spotlightImages(state) { return state.spotlightImages },
