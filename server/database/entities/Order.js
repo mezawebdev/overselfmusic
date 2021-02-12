@@ -79,7 +79,7 @@ module.exports = class Order {
                 this.data.stripeCheckoutSessionData.customer_details.email, 
                 "🖤 Overself Web Store <band@overselfmusic.com>",
                 `<div style="letter-spacing: 1px; font-weight: 200; font-family: Helvetica, sans-serif; color: rgb(10, 10, 10); display: flex; justify-content: center; padding: 15px; width: 100%; height: 100%; background-color: rgb(50, 50, 50);">
-                    <div style="max-width: 400px; padding: 15px; background: rgb(247, 247, 247); border-radius: 5px; border: 1px solid rgb(100, 100, 100);">
+                    <div style="max-width: 415px; padding: 15px; background: rgb(247, 247, 247); border-radius: 5px; border: 1px solid rgb(100, 100, 100);">
                         <img style="display: block; margin: 0 auto; width: 300px; filter: invert(100%);" src="https://overselfmusic.com/assets/images/Logo-Black.png" />
                         <h1 style="text-align: center;">YOU ARE AMAZING! <span style="font-size: 2em; color: red;">♥</span></h1>
                         <hr />
@@ -89,6 +89,7 @@ module.exports = class Order {
                             <ul>${ this.getProductsHTML(this.data.products.filter(product => { return product.description !== "Shipping" })) }</ul>
                         </div>
                         <p>Your total was: <strong>$${ this.data.stripeCheckoutSessionData.amount_total / 100 }</strong> (Including Shipping)</p>
+                        <p>Your Order Number is <strong style="color:#4BB543;">${ this.data.orderNumber }</strong></p>
                         <p>Questions? send us a message over on our <a href="https://overselfmusic.com/contact" target="_blank">Contact Page</p>.
                         <p>And again, thank you!!</p>
                         <p>- Overself</p>
