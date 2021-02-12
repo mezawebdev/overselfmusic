@@ -12,12 +12,12 @@
     },
     {
         "id": "prod_IvjagylYrAqDjq",
-        "priceId": "price_1IJs6qBlBE7zOQ5mNKujcPBc",
+        "priceId": "price_1IJyU6BlBE7zOQ5m5MFJd7EN",
         "name": "Yogi Hoodie",
         "images": [
-            "yogi-hoodie-1.png",
-            "yogi-hoodie-4.jpg",
             "yogi-hoodie-3.png",
+            "yogi-hoodie-4.jpg",
+            "yogi-hoodie-1.png",
             "yogi-hoodie-2.jpg",
             "yogi-hoodie-5.jpg"
         ],
