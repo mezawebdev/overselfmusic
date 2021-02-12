@@ -35,7 +35,7 @@
             ...mapGetters({
                 subtotal: "shop/subtotal",
                 cart: "shop/cart",
-                stripePublicAPIKeyTest: "stripePublicAPIKeyTest",
+                stripePublicAPIKey: "stripePublicAPIKey",
                 itemsAmount: "shop/itemsAmount"
             })
         },
@@ -55,7 +55,7 @@
 
                     try {
                         const req = await axios.post("/api/start-checkout-session", { items: this.cart.items, shipping_cost: this.extraCosts }),
-                            stripe = window.Stripe(this.stripePublicAPIKeyTest);
+                            stripe = window.Stripe(this.stripePublicAPIKey);
 
                         stripe.redirectToCheckout({ sessionId: req.data.id });
                     } catch (err) {
