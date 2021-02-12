@@ -73,7 +73,7 @@ exports.getAllItems = async () => {
             item.metadata.shipping_cost = typeof item.metadata.shipping_cost === "string" ? JSON.parse(item.metadata.shipping_cost) : [];
             item.images = localData.images;
             item.sizeChart = localData.sizeChart || "";
-            formatted.push(item);
+            formatted.unshift(item);
             // console.log("\n");
         }
     });
