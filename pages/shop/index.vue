@@ -7,42 +7,36 @@
                 </MenuButton>
             </ShopMenu>
             <h1>SHOP</h1>
-            <client-only>
-                <Spinner v-show="!itemsReady" />
-            </client-only>
-            <client-only>
-                <RecentlyAddedItem 
-                    :itemId="addedItemId"
-                    v-show="showRecentlyAddedItem" />
-            </client-only>
-            <client-only>
-                <div
-                    v-show="itemsReady" 
-                    class="items">
-                    <masonry 
-                        :cols="{ default: 3, 500: 1, 792: 2 }"
-                        :gutter="10"
-                        ref="masonry">
-                        <nuxt-link 
-                            v-for="(item, i) in items" 
-                            :to="'/shop/item/' + item.id"
-                            :key="i"
-                            ref="item"
-                            :class="{ selected: itemSelected }"
-                            class="item">
-                            <img :src="'/assets/images/products/' + item.images[0]" />
-                            <div class="item-info">
-                                <div>
-                                    <span class="item-name">{{ item.name }}</span>
-                                    <hr />
-                                    <span class="space"> - </span>
-                                    <span class="item-price">${{ item.price.unit_amount }}</span>
-                                </div>
+            <Spinner v-if="!itemsReady" />
+            <RecentlyAddedItem 
+                :itemId="addedItemId"
+                v-if="showRecentlyAddedItem" />
+            <div
+                v-if="itemsReady" 
+                class="items">
+                <masonry 
+                    :cols="{ default: 3, 500: 1, 792: 2 }"
+                    :gutter="10"
+                    ref="masonry">
+                    <nuxt-link 
+                        v-for="(item, i) in items" 
+                        :to="'/shop/item/' + item.id"
+                        :key="i"
+                        ref="item"
+                        :class="{ selected: itemSelected }"
+                        class="item">
+                        <img :src="'/assets/images/products/' + item.images[0]" />
+                        <div class="item-info">
+                            <div>
+                                <span class="item-name">{{ item.name }}</span>
+                                <hr />
+                                <span class="space"> - </span>
+                                <span class="item-price">${{ item.price.unit_amount }}</span>
                             </div>
-                        </nuxt-link>
-                    </masonry>
-                </div>
-            </client-only>
+                        </div>
+                    </nuxt-link>
+                </masonry>
+            </div>
             <div class="shipping-notice">
                 Shipping To U.S. Only
             </div>
@@ -81,11 +75,9 @@
                 addedItemId: null
             }
         },
-        created() {
-            // console.log(this.layout);
-            this.setLayout("shop");
-        },
         mounted() {
+            this.setLayout("shop");
+
             if (typeof this.$route.query["added-item"] === "string") {
                 setTimeout(() => {
                     this.addedItemId = this.$route.query.id;
@@ -100,7 +92,10 @@
             async fetchItems() {
                 const query = await axios.get("/api/shop/get-all-items");
                 this.items = query.data;
-                this.itemsReady = true;
+
+                this.$nextTick(() => {
+                    this.itemsReady = true;
+                });
             },
             goToItem(item) {
                 if (window.innerWidth < 767) {
@@ -128,7 +123,7 @@
     }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
     #shop-page {
         h1 {
             margin-bottom : 15px;
