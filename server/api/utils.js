@@ -2,6 +2,54 @@ const Stripe = require("stripe")(process.env.SHOP_MODE === "test" ? process.env.
     fs = require("fs"),
     { path } = require("app-root-path");
 
+
+const productData = [
+    {
+        "id": "prod_IvjZxdJNrTMM2K",
+        "priceId": "price_1IJs6fBlBE7zOQ5mmWDIWjB4",
+        "name": "Overself Tee",
+        "images": [
+            "overself-tee-1.png",
+            "overself-tee-2.jpg",
+            "overself-tee-3.jpg"
+        ],
+        "sizeChart": "gildan-tee-size-guide.png"
+    },
+    {
+        "id": "prod_IvjagylYrAqDjq",
+        "priceId": "price_1IJyU6BlBE7zOQ5m5MFJd7EN",
+        "name": "Yogi Hoodie",
+        "images": [
+            "yogi-hoodie-3.png",
+            "yogi-hoodie-4.jpg",
+            "yogi-hoodie-1.png",
+            "yogi-hoodie-2.jpg",
+            "yogi-hoodie-5.jpg"
+        ],
+        "sizeChart": "american-apparel-hoodie-size-guide.png"
+    },
+    {
+        "id": "prod_IvjaSA7fPKnwqQ",
+        "priceId": "price_1IJs6wBlBE7zOQ5mnJEZqDJb",
+        "name": "Astronaut Tee",
+        "images": [
+            "astronaut-tee-1.png",
+            "astronaut-tee-2.jpg",
+            "astronaut-tee-3.jpg"
+        ],
+        "sizeChart": "gildan-tee-size-guide.png"
+    },
+    {
+        "id": "prod_IvjaEY8gSKVb6O",
+        "priceId": "price_1IJyKfBlBE7zOQ5mUpjEUxkS",
+        "name": "Overself 5-Panel Cap",
+        "images": [
+            "overself-5-panel-cap-1.png",
+            "overself-5-panel-cap-2.jpg"
+        ]
+    }
+];
+
 exports.createOrderEntry = async session => {
     // do things
     console.log("FULLFILLING ORDER!");
@@ -55,7 +103,7 @@ exports.getStripeAPIKey = () => {
 exports.getAllItems = async () => {
     let items = await Stripe.products.list(),
         prices = await Stripe.prices.list(),
-        localProductDataJSON = JSON.parse(fs.readFileSync(`${ path }/storage/products.json`)),
+        localProductDataJSON = productData,
         formatted = [];
 
     items.data = items.data.filter(item => { return item.active });
