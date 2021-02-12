@@ -7,36 +7,42 @@
                 </MenuButton>
             </ShopMenu>
             <h1>SHOP</h1>
-            <Spinner v-show="!itemsReady" />
-            <RecentlyAddedItem 
-                :itemId="addedItemId"
-                v-show="showRecentlyAddedItem" />
-            <div
-                v-show="itemsReady" 
-                class="items">
-                <masonry 
-                    :cols="{ default: 3, 500: 1, 792: 2 }"
-                    :gutter="10"
-                    ref="masonry">
-                    <nuxt-link 
-                        v-for="(item, i) in items" 
-                        :to="'/shop/item/' + item.id"
-                        :key="i"
-                        ref="item"
-                        :class="{ selected: itemSelected }"
-                        class="item">
-                        <img :src="'/assets/images/products/' + item.images[0]" />
-                        <div class="item-info">
-                            <div>
-                                <span class="item-name">{{ item.name }}</span>
-                                <hr />
-                                <span class="space"> - </span>
-                                <span class="item-price">${{ item.price.unit_amount }}</span>
+            <client-only>
+                <Spinner v-show="!itemsReady" />
+            </client-only>
+            <client-only>
+                <RecentlyAddedItem 
+                    :itemId="addedItemId"
+                    v-show="showRecentlyAddedItem" />
+            </client-only>
+            <client-only>
+                <div
+                    v-show="itemsReady" 
+                    class="items">
+                    <masonry 
+                        :cols="{ default: 3, 500: 1, 792: 2 }"
+                        :gutter="10"
+                        ref="masonry">
+                        <nuxt-link 
+                            v-for="(item, i) in items" 
+                            :to="'/shop/item/' + item.id"
+                            :key="i"
+                            ref="item"
+                            :class="{ selected: itemSelected }"
+                            class="item">
+                            <img :src="'/assets/images/products/' + item.images[0]" />
+                            <div class="item-info">
+                                <div>
+                                    <span class="item-name">{{ item.name }}</span>
+                                    <hr />
+                                    <span class="space"> - </span>
+                                    <span class="item-price">${{ item.price.unit_amount }}</span>
+                                </div>
                             </div>
-                        </div>
-                    </nuxt-link>
-                </masonry>
-            </div>
+                        </nuxt-link>
+                    </masonry>
+                </div>
+            </client-only>
             <div class="shipping-notice">
                 Shipping To U.S. Only
             </div>
