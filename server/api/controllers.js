@@ -39,10 +39,7 @@ exports.stripeWebhook = async (req, res) => {
 
     let event;
 
-    // console.log({
-    //     shopmode: process.env.SHOP_MODE,
-    //     livesecret: [rocess.env.STRIPE_API_WEBHOOK_SECRET_LIVE,
-    // });
+    console.log("ENDPOINT");
 
     try {
         console.log("try..");
