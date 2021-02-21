@@ -51,6 +51,18 @@
                     <div class="description">
                         <p>{{ item.description }}</p>
                     </div>
+                    <div
+                        v-if="item.features.length > 0" 
+                        class="features">
+                        <p>Features:</p>
+                        <ul>
+                            <li
+                                v-for="(feature, i) in item.features"
+                                :key="i">
+                                {{ feature }}
+                            </li>
+                        </ul>
+                    </div>
                     <div 
                         v-if="item.sizeChart.length > 0"
                         class="size-chart">
@@ -372,7 +384,8 @@
 
                     .description,
                     .extra-info,
-                    .size-chart {
+                    .size-chart,
+                    .features {
                         margin-bottom : 25px;
                         text-align    : left;
 
@@ -383,6 +396,22 @@
                         span {
                             font-weight : bold;
                         }
+                    }
+
+                    .features {
+                        p {
+                            font-weight : bold;
+                        }
+
+                        ul {
+                             li {
+                                list-style    : disc;
+                                margin-bottom : 5px;
+                                margin-left   : 17px;
+                            }
+                        }
+
+                       
                     }
 
                     .size {

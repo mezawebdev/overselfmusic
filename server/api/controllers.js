@@ -10,6 +10,8 @@ exports.fetchOrderTotal = async (req, res) => {
     if (typeof req.query.on !== "string") return res.status(401).end();
 
     const order = new Order(req.query.on);
+    
+    console.log(order);
 
     try {
         await order.fetch();

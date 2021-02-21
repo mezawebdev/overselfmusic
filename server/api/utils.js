@@ -13,7 +13,14 @@ const productData = [
             "overself-tee-2.jpg",
             "overself-tee-3.jpg"
         ],
-        "sizeChart": "gildan-tee-size-guide.png"
+        "sizeChart": "gildan-tee-size-guide.png",
+        "features": [
+            "Unisex",
+            "Regular Fit",
+            "Printed on Gildan 64000",
+            "100% ring-spun cotton",
+            "Pre-shrunk for extra durability"
+        ]
     },
     {
         "id": "prod_IvjagylYrAqDjq",
@@ -26,18 +33,35 @@ const productData = [
             "yogi-hoodie-2.jpg",
             "yogi-hoodie-5.jpg"
         ],
-        "sizeChart": "american-apparel-hoodie-size-guide.png"
+        "sizeChart": "american-apparel-hoodie-size-guide.png",
+        "features": [
+            "Unisex",
+            "Slim Fit",
+            "Printed on American Apparel 5495W",
+            "100% California fleece cotton",
+            "Fabric weight: 7.2 oz/yd² (244.1 g/m²)",
+            "Matching polyester drawcord",
+            "Raglan sleeves",
+            "Front pouch pocket"
+        ]
     },
     {
         "id": "prod_IvjaSA7fPKnwqQ",
-        "priceId": "price_1IJs6wBlBE7zOQ5mnJEZqDJb",
+        "priceId": "price_1INMxHBlBE7zOQ5mz48TZkrH",
         "name": "Astronaut Tee",
         "images": [
             "astronaut-tee-1.png",
             "astronaut-tee-2.jpg",
             "astronaut-tee-3.jpg"
         ],
-        "sizeChart": "gildan-tee-size-guide.png"
+        "sizeChart": "gildan-tee-size-guide.png",
+        "features": [
+            "Unisex",
+            "Regular Fit",
+            "Printed on Gildan 64000",
+            "100% ring-spun cotton",
+            "Pre-shrunk for extra durability"
+        ]
     },
     {
         "id": "prod_IvjaEY8gSKVb6O",
@@ -46,6 +70,14 @@ const productData = [
         "images": [
             "overself-5-panel-cap-1.png",
             "overself-5-panel-cap-2.jpg"
+        ],
+        "features": [
+            "One size fits all",
+            "Printed on Yupoong 7005",
+            "100% cotton",
+            "Metal eyelets",
+            "Nylon strap clip closure",
+            "Head circumference: 19⅝″–22½″"
         ]
     }
 ];
@@ -121,6 +153,7 @@ exports.getAllItems = async () => {
             item.metadata.shipping_cost = typeof item.metadata.shipping_cost === "string" ? JSON.parse(item.metadata.shipping_cost) : [];
             item.images = localData.images;
             item.sizeChart = localData.sizeChart || "";
+            item.features = localData.features || [];
             formatted.unshift(item);
             // console.log("\n");
         }

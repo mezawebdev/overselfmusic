@@ -81,14 +81,17 @@
         },
         methods: {
             async fetchOrder() {
-                try {
-                    const req = await axios.get("/api/shop/fetch-order-total?on=" + this.orderNumber);
-                    this.total = req.data;
-                    this.clearCart();
-                    this.orderLoaded = true;
-                } catch (err) {
-                    this.$router.push("/shop");
-                }
+                setTimeout(async () => {
+                    try {
+                        const req = await axios.get("/api/shop/fetch-order-total?on=" + this.orderNumber);
+                        this.total = req.data;
+                        this.clearCart();
+                        this.orderLoaded = true;
+                    } catch (err) {
+                        this.$toast.error("There was an error.", { duration: 5000 });
+                        this.$router.push("/shop");
+                    }
+                }, 100);
             },
             ...mapActions({
                 setLayout: "setLayout",
