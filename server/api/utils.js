@@ -47,7 +47,7 @@ const productData = [
     },
     {
         "id": "prod_IvjaSA7fPKnwqQ",
-        "priceId": "price_1INMxHBlBE7zOQ5mz48TZkrH",
+        "priceId": "price_1IJs6wBlBE7zOQ5mnJEZqDJb",
         "name": "Astronaut Tee",
         "images": [
             "astronaut-tee-1.png",
